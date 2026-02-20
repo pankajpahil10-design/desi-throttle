@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical General — Desi Throttle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; --success: #2d6a4f; --error: #9d0208; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; }
+        .header { background: linear-gradient(90deg, var(--darker), var(--secondary)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--light); }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 1.5rem; }
+        .nav a { color: var(--light); text-decoration: none; font-weight: 500; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+        .subtitle { color: #8892a0; margin-bottom: 2rem; }
+        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding: 1rem; background: var(--darker); border-radius: 10px; }
+        .topic-nav a { padding: 0.4rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.85rem; }
+        .question-card { background: var(--darker); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
+        .question-number { color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
+        .options { list-style: none; }
+        .options li { padding: 0.8rem 1rem; margin-bottom: 0.5rem; background: var(--dark); border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+        .options li:hover:not(.disabled) { background: var(--secondary); }
+        .options li.correct { background: var(--success); border-color: #52b788; }
+        .options li.wrong { background: var(--error); border-color: var(--primary); }
+        .options li.disabled { cursor: default; opacity: 0.7; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 8px; }
+        .explanation.show { display: block; }
+        .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
+        .explanation ul { margin-left: 1.5rem; }
+        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">🇮🇳 Desi<span>Throttle</span></a>
+        <nav class="nav"><a href="index.html">Home</a><a href="index.html#subjects">Subjects</a></nav>
+    </header>
+    <div class="container">
+        <h1>🛠️ Technical General — Question Bank</h1>
+        <p class="subtitle">200+ questions on aircraft systems, engines, electrical</p>
+        <div class="topic-nav">
+            <a href="#q1">Engines</a><a href="#q2">Electrical</a><a href="#q3">Hydraulics</a><a href="#q4">Instruments</a><a href="#q5">Landing Gear</a>
+        </div>
+
+        <div class="question-card" id="q1">
+            <div class="question-number">Q1.</div>
+            <p class="question-text">Spark plug fouling is most likely to occur during:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) High power settings</li>
+                <li onclick="checkAnswer(this, true)">b) Prolonged idle or low power</li>
+                <li onclick="checkAnswer(this, false)">c) Cruise</li>
+                <li onclick="checkAnswer(this, false)">d) Takeoff</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
+            <div class="explanation" id="exp1">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>Spark plug fouling:</strong> Lead/oil deposits at low temps</li>
+                    <li>Occurs during: Idle, taxi, low power operations</li>
+                    <li>Solution: Lean mixture, high RPM periodically</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <div class="question-number">Q2.</div>
+            <p class="question-text">What does BATT switch control?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Alternator</li>
+                <li onclick="checkAnswer(this, true)">b) Battery bus</li>
+                <li onclick="checkAnswer(this, false) c) Starter</li>
+                <li onclick="checkAnswer(this, false)">d) Avionics</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
+            <div class="explanation" id="exp2">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>BATT</strong> = Battery master switch</li>
+                    <li>Connects battery to essential bus</li>
+                    <li>Must be ON for any electrical operation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <div class="question-number">Q3.</div>
+            <p class="question-text">Hydraulic system provides pressure for:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Only landing gear</li>
+                <li onclick="checkAnswer(this, true)">b) Landing gear, flaps, brakes</li>
+                <li onclick="checkAnswer(this, false)">c) Only flaps</li>
+                <li onclick="checkAnswer(this, false)">d) Fuel system</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
+            <div class="explanation" id="exp3">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>Hydraulics power:</strong></li>
+                    <li>Landing gear extension/retraction</li>
+                    <li>Flap operation</li>
+                    <li>Wheel brakes</li>
+                    <li>Steering (nosewheel)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <div class="question-number">Q4.</div>
+            <p class="question-text">Pitot static system supplies pressure to:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Altimeter only</li>
+                <li onclick="checkAnswer(this, true)">b) Altimeter, ASI, VSI</li>
+                <li onclick="checkAnswer(this, false)">c) Engine instruments</li>
+                <li onclick="checkAnswer(this, false)">d) Radio</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
+            <div class="explanation" id="exp4">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>Pitot:</strong> Total pressure → ASI</li>
+                    <li><strong>Static:</strong> Ambient pressure → Altimeter, VSI</li>
+                    <li>Blockage = dangerous! Check pitot cover</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q5">
+            <div class="question-number">Q5.</div>
+            <p class="question-text">Maximum demonstrated crosswind component is:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Regulatory limit</li>
+                <li onclick="checkAnswer(this, true)">b) Tested limit (not mandatory)</li>
+                <li onclick="checkAnswer(this, false)">c) Never exceed</li>
+                <li onclick="checkAnswer(this, false)">d) Takeoff limit</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
+            <div class="explanation" id="exp5">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>Maximum Demonstrated:</strong> Highest crosswind during certification</li>
+                    <li>NOT a regulatory limit (that's "authorized")</li>
+                    <li>Pilot discretion for higher winds</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer"><p>🇮🇳 Desi Throttle © 2026 | Made with ❤️ by Captain Pankaj & Nayki</p></footer>
+    <script>
+        function checkAnswer(element, isCorrect) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('li').forEach(opt => { opt.classList.add('disabled'); opt.style.pointerEvents = 'none'; });
+            element.classList.add(isCorrect ? 'correct' : 'wrong');
+            if (!isCorrect) { parent.querySelectorAll('li').forEach(opt => { if (opt.getAttribute('onclick').includes('true')) opt.classList.add('correct'); }); }
+        }
+        function toggleExplanation(id) { document.getElementById(id).classList.toggle('show'); }
+    </script>
+</body>
+</html>
