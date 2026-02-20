@@ -1,40 +1,38 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Available Tools
 
-## What Goes Here
+### CLI Tools (Full Path)
+- **Git**: `C:\Program Files\Git\bin\git.exe`
+- **GitHub CLI**: `C:\Program Files\GitHub CLI\gh.exe`
+- **Node.js**: `node` (in PATH)
+- **PowerShell**: `powershell` (in PATH)
+- **CMD**: `cmd` (in PATH)
 
-Things like:
+### OpenClaw Skills
+Working:
+- ✅ weather
+- ✅ web_fetch
+- ✅ skill-creator  
+- ✅ healthcheck
+- ⚠️ browser (needs Chrome extension attached)
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+### What I Can Do
+1. Read/write/edit files
+2. Execute shell commands
+3. Web fetch (no API key needed)
+4. Git operations via gh CLI or git.exe
+5. System info via PowerShell/CMD
+6. Send messages via Telegram
 
-## Examples
+### What Needs Setup
+- Python (not installed properly)
+- Brave API (need key)
+- Various npm packages
 
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+### File Paths (Quick Reference)
+- Workspace: `C:\Users\Admin\.openclaw\workspace`
+- Aviation materials: `D:\pk\`
+- Downloads: `D:\downloads\`
+- GitHub CLI: `C:\Program Files\GitHub CLI\gh.exe`
+- Git: `C:\Program Files\Git\bin\git.exe`
