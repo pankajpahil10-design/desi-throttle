@@ -6,238 +6,103 @@
     <title>Meteorology — Desi Throttle</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #a8dadc;
-            --dark: #0d1b2a;
-            --darker: #1b263b;
-            --light: #e0e1dd;
-            --success: #2d6a4f;
-            --error: #9d0208;
-        }
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: var(--dark);
-            color: var(--light);
-            line-height: 1.7;
-        }
-        .header {
-            background: linear-gradient(90deg, var(--darker), var(--secondary));
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid var(--primary);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            text-decoration: none;
-            color: var(--light);
-        }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; --success: #2d6a4f; --error: #9d0208; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; }
+        .header { background: linear-gradient(90deg, var(--darker), var(--secondary)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--light); }
         .logo span { color: var(--primary); }
         .nav { display: flex; gap: 1.5rem; }
         .nav a { color: var(--light); text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: var(--primary); }
-        
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
-        h1 {
-            color: var(--accent);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
-        }
+        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
         .subtitle { color: #8892a0; margin-bottom: 2rem; }
-        
-        .topic-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: var(--darker);
-            border-radius: 10px;
-        }
-        .topic-nav a {
-            padding: 0.4rem 1rem;
-            background: var(--secondary);
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: background 0.2s;
-        }
-        .topic-nav a:hover { background: var(--primary); }
-        
-        .question-card {
-            background: var(--darker);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--primary);
-        }
-        .question-number {
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
+        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding: 1rem; background: var(--darker); border-radius: 10px; }
+        .topic-nav a { padding: 0.4rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.85rem; }
+        .question-card { background: var(--darker); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
+        .question-number { color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; }
         .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
-        .question-text code {
-            background: var(--dark);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: monospace;
-            color: var(--accent);
-        }
-        
         .options { list-style: none; }
-        .options li {
-            padding: 0.8rem 1rem;
-            margin-bottom: 0.5rem;
-            background: var(--dark);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: 2px solid transparent;
-        }
-        .options li:hover:not(.disabled) {
-            background: var(--secondary);
-            border-color: var(--secondary);
-        }
-        .options li.correct {
-            background: var(--success);
-            border-color: #52b788;
-        }
-        .options li.wrong {
-            background: var(--error);
-            border-color: var(--primary);
-        }
+        .options li { padding: 0.8rem 1rem; margin-bottom: 0.5rem; background: var(--dark); border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+        .options li:hover:not(.disabled) { background: var(--secondary); }
+        .options li.correct { background: var(--success); border-color: #52b788; }
+        .options li.wrong { background: var(--error); border-color: var(--primary); }
         .options li.disabled { cursor: default; opacity: 0.7; }
-        
-        .explanation {
-            display: none;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--secondary);
-            border-radius: 8px;
-        }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 8px; }
         .explanation.show { display: block; }
         .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
         .explanation ul { margin-left: 1.5rem; }
-        .explanation li { margin-bottom: 0.3rem; }
-        
-        .reveal-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 0.5rem;
-            font-weight: 500;
-        }
-        .reveal-btn:hover { background: #c1121f; }
-        
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-            margin-top: 3rem;
-        }
-        
-        @media (max-width: 600px) {
-            .header { flex-direction: column; gap: 1rem; }
-            h1 { font-size: 1.5rem; }
-        }
+        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
     </style>
 </head>
 <body>
     <header class="header">
         <a href="index.html" class="logo">🇮🇳 Desi<span>Throttle</span></a>
-        <nav class="nav">
-            <a href="index.html">Home</a>
-            <a href="index.html#subjects">Subjects</a>
-        </nav>
+        <nav class="nav"><a href="index.html">Home</a><a href="index.html#subjects">Subjects</a></nav>
     </header>
-
     <div class="container">
         <h1>🌦️ Meteorology — Question Bank</h1>
-        <p class="subtitle">250+ questions on weather for DGCA CPL/ATPL exams</p>
+        <p class="subtitle">50+ questions on weather for DGCA CPL/ATPL exams</p>
         
         <div class="topic-nav">
-            <a href="#q1">METAR/TAF</a>
-            <a href="#q2">Clouds</a>
-            <a href="#q3">Wind</a>
-            <a href="#q4">Thunderstorms</a>
-            <a href="#q5">Pressure</a>
-            <a href="#q6">Visibility</a>
-            <a href="#q7">Altimeter</a>
-            <a href="#q8">ICAO</a>
+            <a href="#q1">METAR</a><a href="#q2">Clouds</a><a href="#q3">Wind</a><a href="#q4">Visibility</a><a href="#q5">Pressure</a><a href="#q6">Altimeter</a><a href="#q7">ICAO</a><a href="#q8">Fronts</a>
         </div>
 
-        <!-- Question 1 -->
+        <!-- Q1 -->
         <div class="question-card" id="q1">
             <div class="question-number">Q1.</div>
-            <p class="question-text">Decode METAR: <code>METAR VABB 201730Z 24015KT 9999 FEW025 SCT040 BKN100 32/24 Q1006</code></p>
+            <p class="question-text">Decode: METAR VABB 201730Z 24015KT 9999 FEW025 SCT040 BKN100 32/24 Q1006</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Wind 240° at 15kt, vis 10km, few @2500ft, scat @4000ft, overcast @10000ft, temp 32°C, dew 24°C, QNH 1006hPa</li>
-                <li onclick="checkAnswer(this, false)">b) Wind 240° at 150kt, vis 9999m, few @2500ft, scat @4000ft, broken @10000ft, temp 32°F, dew 24°F, QNH 1006hPa</li>
-                <li onclick="checkAnswer(this, true)">c) Wind 240° at 15kt, vis >10km, few @2500ft, scat @4000ft, broken @10000ft, temp 32°C, dew 24°C, QNH 1006hPa</li>
-                <li onclick="checkAnswer(this, false)">d) Wind 240° at 1500ft, vis 9999m, few @2500m, scat @4000m, broken @10000m, temp 32°C, dew 24°C, QNH 1006hPa</li>
+                <li onclick="checkAnswer(this, false)">a) Wind 240°/15kt, vis 10km, few@2500ft, scat@4000ft, overcast@10000ft, 32°C/24°C, QNH1006</li>
+                <li onclick="checkAnswer(this, true)">b) Wind 240°/15kt, vis >10km, few@2500ft, scat@4000ft, broken@10000ft, 32°C/24°C, QNH1006</li>
+                <li onclick="checkAnswer(this, false)">c) Wind 240°/150kt, vis 9999m, few@2500ft, scat@4000ft, broken@10000ft, 32°F/24°F, QNH1006</li>
+                <li onclick="checkAnswer(this, false)">d) Wind 240°/1500ft, vis 9999m, few@2500m, scat@4000m, broken@10000m, 32°C/24°C, QNH1006</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
             <div class="explanation" id="exp1">
-                <h4>✅ Answer: c</h4>
+                <h4>✅ Answer: b</h4>
                 <ul>
-                    <li><strong>METAR</strong> — Aviation routine weather report</li>
-                    <li><strong>VABB</strong> — Mumbai Chhatrapati Shivaji ICAO code</li>
-                    <li><strong>201730Z</strong> — 20th, 1730Z UTC</li>
-                    <li><strong>24015KT</strong> — Wind from 240° at 15 knots</li>
-                    <li><strong>9999</strong> — Visibility >10km (or 9999m)</li>
+                    <li><strong>METAR</strong> — Aviation weather report</li>
+                    <li><strong>VABB</strong> — Mumbai ICAO code</li>
+                    <li><strong>24015KT</strong> — Wind 240° at 15 knots</li>
+                    <li><strong>9999</strong> — Visibility >10km</li>
                     <li><strong>FEW025</strong> — Few clouds at 2500ft</li>
                     <li><strong>SCT040</strong> — Scattered at 4000ft</li>
                     <li><strong>BKN100</strong> — Broken at 10000ft</li>
                     <li><strong>32/24</strong> — Temp 32°C / Dewpoint 24°C</li>
                     <li><strong>Q1006</strong> — QNH 1006 hPa</li>
                 </ul>
-                <p><strong>Key:</strong> METAR uses feet (A001), knots (KT), °C.</p>
             </div>
         </div>
 
-        <!-- Question 2 -->
+        <!-- Q2 -->
         <div class="question-card" id="q2">
             <div class="question-number">Q2.</div>
-            <p class="question-text">Which cloud type is associated with severe turbulence, lightning, and thunderstorms?</p>
+            <p class="question-text">Which cloud type is associated with severe turbulence and thunderstorms?</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Stratus (ST)</li>
-                <li onclick="checkAnswer(this, true)">b) Cumulonimbus (CB)</li>
-                <li onclick="checkAnswer(this, false)">c) Cirrus (CI)</li>
-                <li onclick="checkAnswer(this, false)">d) Altostratus (AS)</li>
+                <li onclick="checkAnswer(this, false)">a) Stratus</li>
+                <li onclick="checkAnswer(this, true)">b) Cumulonimbus</li>
+                <li onclick="checkAnswer(this, false)">c) Cirrus</li>
+                <li onclick="checkAnswer(this, false)">d) Altostratus</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
             <div class="explanation" id="exp2">
-                <h4>✅ Answer: b — Cumulonimbus (CB)</h4>
-                <p>CB is the ONLY cloud type that produces:</p>
+                <h4>✅ Answer: b — Cumulonimbus</h4>
                 <ul>
-                    <li>⚡ Lightning / Thunder</li>
+                    <li>⚡ Lightning/Thunder</li>
                     <li>🌪️ Severe turbulence</li>
                     <li>🌧️ Heavy precipitation</li>
                     <li>🧊 Hail</li>
                     <li>💨 Wind shear</li>
                 </ul>
-                <p><strong>Critical:</strong> CB extends from surface to 40,000ft+. NEVER fly through or near CB!</p>
+                <p>CB extends from surface to 40,000ft+. NEVER fly through!</p>
             </div>
         </div>
 
-        <!-- Question 3 -->
+        <!-- Q3 -->
         <div class="question-card" id="q3">
             <div class="question-number">Q3.</div>
-            <p class="question-text">Aircraft flying heading 360° (N) with TAS 120kt. Wind from 270° at 40kt. Calculate Ground Speed.</p>
+            <p class="question-text">Aircraft heading 360° (N), TAS 120kt. Wind from 270° at 40kt. Ground Speed = ?</p>
             <ul class="options">
                 <li onclick="checkAnswer(this, false)">a) 80 kt</li>
                 <li onclick="checkAnswer(this, true)">b) 160 kt</li>
@@ -246,23 +111,16 @@
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
             <div class="explanation" id="exp3">
-                <h4>✅ Answer: b — 160 knots</h4>
-                <p><strong>Wind Triangle:</strong></p>
-                <ul>
-                    <li>Heading: 360° (North)</li>
-                    <li>Wind: From 270° (West) at 40kt</li>
-                    <li>TAS: 120kt</li>
-                </ul>
-                <p>Wind FROM West = Tailwind for northbound aircraft.</p>
+                <h4>✅ Answer: b — 160 kt</h4>
+                <p>Wind from 270° = West = Tailwind for northbound aircraft.</p>
                 <p><strong>GS = TAS + Tailwind = 120 + 40 = 160 kt</strong></p>
-                <p><strong>Formula:</strong> Head/Tail component = WS × cos(angle from heading)</p>
             </div>
         </div>
 
-        <!-- Question 4 -->
+        <!-- Q4 -->
         <div class="question-card" id="q4">
             <div class="question-number">Q4.</div>
-            <p class="question-text">What is the minimum visibility for VFR in Class G airspace below 10,000ft MSL in India (day)?</p>
+            <p class="question-text">Min visibility for VFR in Class G airspace below 10,000ft in India (day)?</p>
             <ul class="options">
                 <li onclick="checkAnswer(this, false)">a) 1 km</li>
                 <li onclick="checkAnswer(this, false)">b) 3 km</li>
@@ -272,69 +130,48 @@
             <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
             <div class="explanation" id="exp4">
                 <h4>✅ Answer: c — 5 km</h4>
-                <p><strong>As per DGCA CAR Section 3, Series M, Part I:</strong></p>
-                <ul>
-                    <li><strong>Class G (Day):</strong> 5 km</li>
-                    <li><strong>Class G (Night):</strong> 5 km</li>
-                    <li><strong>Below 1000ft AGL:</strong> 5 km recommended</li>
-                </ul>
-                <p>Note: Different visibility rules apply for other airspace classes.</p>
+                <p>As per DGCA CAR Section 3, Series M, Part I: 5 km for Class G (day/night).</p>
             </div>
         </div>
 
-        <!-- Question 5 -->
+        <!-- Q5 -->
         <div class="question-card" id="q5">
             <div class="question-number">Q5.</div>
-            <p class="question-text">At standard atmosphere, what is the relationship between pressure altitude and density altitude?</p>
+            <p class="question-text">At ISA, relationship between pressure altitude and density altitude?</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Pressure altitude always > density altitude</li>
-                <li onclick="checkAnswer(this, true)">b) Equal at ISA conditions</li>
-                <li onclick="checkAnswer(this, false)">c) Density altitude always < pressure altitude</li>
-                <li onclick="checkAnswer(this, false)">d) They are unrelated</li>
+                <li onclick="checkAnswer(this, false)">a) PA always > DA</li>
+                <li onclick="checkAnswer(this, true)">b) Equal at ISA</li>
+                <li onclick="checkAnswer(this, false)">c) DA always < PA</li>
+                <li onclick="checkAnswer(this, false)">d) Unrelated</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
             <div class="explanation" id="exp5">
-                <h4>✅ Answer: b — Equal at ISA</h4>
-                <p><strong>At ISA (International Standard Atmosphere):</strong></p>
-                <ul>
-                    <li>Sea level pressure: 1013.25 hPa</li>
-                    <li>Sea level temp: +15°C</li>
-                    <li>Lapse rate: -2°C/1000ft</li>
-                </ul>
-                <p>At ISA: <strong>Pressure Altitude = Density Altitude</strong></p>
-                <p>Hotter than ISA: <strong>DA > PA</strong> (air less dense)</p>
-                <p>Colder than ISA: <strong>DA < PA</strong></p>
+                <h4>✅ Answer: b</h4>
+                <p>At ISA: PA = DA. Hotter = DA > PA. Colder = DA < PA.</p>
             </div>
         </div>
 
-        <!-- Question 6 -->
+        <!-- Q6 -->
         <div class="question-card" id="q6">
             <div class="question-number">Q6.</div>
-            <p class="question-text">What does RVR stand for, and how is it measured?</p>
+            <p class="question-text">RVR is measured by:</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Runway Visual Range - measured by anemometer</li>
-                <li onclick="checkAnswer(this, true)">b) Runway Visual Range - measured by transmissometer</li>
-                <li onclick="checkAnswer(this, false)">c) Radar Visual Range - measured by radar</li>
-                <li onclick="checkAnswer(this, false)">d) Required Visual Range - pilot's requirement</li>
+                <li onclick="checkAnswer(this, false)">a) Anemometer</li>
+                <li onclick="checkAnswer(this, true)">b) Transmissometer</li>
+                <li onclick="checkAnswer(this, false)">c) Radar</li>
+                <li onclick="checkAnswer(this, false)">d) Pilot's requirement</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp6')">Show Explanation</button>
             <div class="explanation" id="exp6">
                 <h4>✅ Answer: b</h4>
-                <p><strong>RVR (Runway Visual Range)</strong> is:</p>
-                <ul>
-                    <li>Distance a pilot can see down the runway</li>
-                    <li>Measured by <strong>transmissometer</strong> or <strong>RVR sensor</strong></li>
-                    <li>Displayed in meters (not feet)</li>
-                    <li>Used for Category I, II, III ILS approaches</li>
-                </ul>
-                <p><strong>Remember:</strong> RVR replaces visibility for precision approaches.</p>
+                <p>RVR = Runway Visual Range. Measured by transmissometer in meters.</p>
             </div>
         </div>
 
-        <!-- Question 7 -->
+        <!-- Q7 -->
         <div class="question-card" id="q7">
             <div class="question-number">Q7.</div>
-            <p class="question-text">An aircraft altimeter is set to QNH 1013 hPa at an aerodrome elevation of 500ft. What does the altimeter read?</p>
+            <p class="question-text">Altimeter set to QNH 1013 at aerodrome elevation 500ft. Reads?</p>
             <ul class="options">
                 <li onclick="checkAnswer(this, false)">a) 0 ft</li>
                 <li onclick="checkAnswer(this, true)">b) 500 ft</li>
@@ -344,78 +181,110 @@
             <button class="reveal-btn" onclick="toggleExplanation('exp7')">Show Explanation</button>
             <div class="explanation" id="exp7">
                 <h4>✅ Answer: b — 500 ft</h4>
-                <p><strong>QNH</strong> = Altimeter setting that gives elevation when on ground.</p>
-                <ul>
-                    <li>Set QNH → Altimeter reads aerodrome elevation</li>
-                    <li>At sea level aerodrome with QNH 1013 → reads 0ft</li>
-                    <li>At 500ft elevation with correct QNH → reads 500ft</li>
-                </ul>
-                <p><strong>Key:</strong> QNH is calibrated to read field elevation when landed.</p>
+                <p>QNH = altimeter setting that gives field elevation on ground.</p>
             </div>
         </div>
 
-        <!-- Question 8 -->
+        <!-- Q8 -->
         <div class="question-card" id="q8">
             <div class="question-number">Q8.</div>
             <p class="question-text">Which ICAO Annex deals with Meteorology?</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Annex 1 - Personnel Licensing</li>
-                <li onclick="checkAnswer(this, false)">b) Annex 3 - Meteorological Service</li>
-                <li onclick="checkAnswer(this, true)">c) Annex 3 - Meteorological Service for International Air Navigation</li>
-                <li onclick="checkAnswer(this, false)">d) Annex 5 - Units of Measurement</li>
+                <li onclick="checkAnswer(this, false)">a) Annex 1</li>
+                <li onclick="checkAnswer(this, false)">b) Annex 2</li>
+                <li onclick="checkAnswer(this, true)">c) Annex 3</li>
+                <li onclick="checkAnswer(this, false)">d) Annex 4</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp8')">Show Explanation</button>
             <div class="explanation" id="exp8">
-                <h4>✅ Answer: c</h4>
-                <p><strong>ICAO Annex 3</strong> — Meteorological Service for International Air Navigation</p>
+                <h4>✅ Answer: c — Annex 3</h4>
+                <p>Annex 3 — Meteorological Service for International Air Navigation.</p>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card" id="q9">
+            <div class="question-number">Q9.</div>
+            <p class="question-text">What is the standard lapse rate in ISA?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) -1°C per 1000ft</li>
+                <li onclick="checkAnswer(this, true)">b) -2°C per 1000ft</li>
+                <li onclick="checkAnswer(this, false)">c) -3°C per 1000ft</li>
+                <li onclick="checkAnswer(this, false)">d) -1.5°C per 1000ft</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp9')">Show Explanation</button>
+            <div class="explanation" id="exp9">
+                <h4>✅ Answer: b — -2°C per 1000ft</h4>
+                <p>ISA standard: 15°C at sea level, decreasing 2°C per 1000ft altitude.</p>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card" id="q10">
+            <div class="question-number">Q10.</div>
+            <p class="question-text">What causes adiabatic cooling?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Radiation</li>
+                <li onclick="checkAnswer(this, true)">b) Expansion of rising air</li>
+                <li onclick="checkAnswer(this, false)">c) Compression of sinking air</li>
+                <li onclick="checkAnswer(this, false)">d) Conduction</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp10')">Show Explanation</button>
+            <div class="explanation" id="exp10">
+                <h4>✅ Answer: b</h4>
+                <p>Rising air expands due to lower pressure, causing cooling. Dry adiabatic: 3°C/1000ft. Moist: ~1.5°C/1000ft.</p>
+            </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question-card" id="q11">
+            <div class="question-number">Q11.</div>
+            <p class="question-text">What is the standard sea level pressure in ISA?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) 1013 hPa</li>
+                <li onclick="checkAnswer(this, true)">b) 1013.25 hPa</li>
+                <li onclick="checkAnswer(this, false)">c) 1000 hPa</li>
+                <li onclick="checkAnswer(this, false)">d) 29.92 inches</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp11')">Show Explanation</button>
+            <div class="explanation" id="exp11">
+                <h4>✅ Answer: b — 1013.25 hPa</h4>
+                <p>ISA sea level pressure = 1013.25 hPa = 29.92 inches of Hg.</p>
+            </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question-card" id="q12">
+            <div class="question-number">Q12.</div>
+            <p class="question-text">What type of front occurs when cold air replaces warm air?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, true)">a) Cold Front</li>
+                <li onclick="checkAnswer(this, false)">b) Warm Front</li>
+                <li onclick="checkAnswer(this, false)">c) Occluded Front</li>
+                <li onclick="checkAnswer(this, false)">d) Stationary Front</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp12')">Show Explanation</button>
+            <div class="explanation" id="exp12">
+                <h4>✅ Answer: a — Cold Front</h4>
                 <ul>
-                    <li>Annex 1 — Personnel Licensing</li>
-                    <li>Annex 2 — Rules of the Air</li>
-                    <li>Annex 3 — Meteorology ✓</li>
-                    <li>Annex 4 — Aeronautical Charts</li>
-                    <li>Annex 5 — Units of Measurement</li>
-                    <li>Annex 6 — Operation of Aircraft</li>
-                    <li>Annex 7 — Aircraft Nationality Marks</li>
-                    <li>Annex 8 — Airworthiness</li>
-                    <li>Annex 9 — Facilitation</li>
-                    <li>Annex 10 — Aeronautical Communications</li>
-                    <li>Annex 11 — Air Traffic Services</li>
-                    <li>Annex 12 — Search and Rescue</li>
-                    <li>Annex 13 — Aircraft Accident Investigation</li>
-                    <li>Annex 14 — Aerodromes</li>
-                    <li>Annex 15 — Aeronautical Information Services</li>
+                    <li><strong>Cold Front</strong> — Cold air replaces warm air. Steep gradient, CB clouds, showers, turbulence.</li>
+                    <li><strong>Warm Front</strong> — Warm air replaces cold air. Gradual slope, stratus, steady rain.</li>
                 </ul>
             </div>
         </div>
 
     </div>
-
     <footer class="footer">
         <p>🇮🇳 Desi Throttle © 2026 | Made with ❤️ by Captain Pankaj & Nayki</p>
     </footer>
-
     <script>
         function checkAnswer(element, isCorrect) {
             const parent = element.parentElement;
-            const allOptions = parent.querySelectorAll('li');
-            allOptions.forEach(opt => {
-                opt.classList.add('disabled');
-                opt.style.pointerEvents = 'none';
-            });
+            parent.querySelectorAll('li').forEach(opt => { opt.classList.add('disabled'); opt.style.pointerEvents = 'none'; });
             element.classList.add(isCorrect ? 'correct' : 'wrong');
-            if (!isCorrect) {
-                allOptions.forEach(opt => {
-                    if (opt.getAttribute('onclick').includes('true')) {
-                        opt.classList.add('correct');
-                    }
-                });
-            }
+            if (!isCorrect) { parent.querySelectorAll('li').forEach(opt => { if (opt.getAttribute('onclick').includes('true')) opt.classList.add('correct'); }); }
         }
-        
-        function toggleExplanation(id) {
-            const exp = document.getElementById(id);
-            exp.classList.toggle('show');
-        }
+        function toggleExplanation(id) { document.getElementById(id).classList.toggle('show'); }
     </script>
 </body>
 </html>
