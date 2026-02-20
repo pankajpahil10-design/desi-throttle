@@ -1,1 +1,195 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ghost Aviator — Air Regulations</title><style>body{font-family:Segoe UI,Arial;background:#0b1220;color:#e8efff;margin:0}.wrap{max-width:980px;margin:auto;padding:24px}.card{background:#121d33;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;margin:12px 0}a{color:#7db4ff}</style></head><body><div class="wrap"><h1>Air Regulations (DGCA + ICAO)</h1><div class="card"><h2>Coverage</h2><ul><li>Rules of the Air and right-of-way</li><li>VFR/IFR minima and operational compliance</li><li>Licensing framework and medical/legal obligations</li><li>Airspace classes and communication requirements</li><li>India-specific DGCA CAR application logic</li></ul></div><div class="card"><h2>Exam Method</h2><p>Interpretative approach: rule text + scenario application + enforcement implications.</p></div><div class="card"><a href="./index.html">← Back Home</a></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Regulations — Desi Throttle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; --success: #2d6a4f; --error: #9d0208; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; }
+        .header { background: linear-gradient(90deg, var(--darker), var(--secondary)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--light); }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 1.5rem; }
+        .nav a { color: var(--light); text-decoration: none; font-weight: 500; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+        .subtitle { color: #8892a0; margin-bottom: 2rem; }
+        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding: 1rem; background: var(--darker); border-radius: 10px; }
+        .topic-nav a { padding: 0.4rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.85rem; }
+        .question-card { background: var(--darker); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
+        .question-number { color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; }
+        .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
+        .options { list-style: none; }
+        .options li { padding: 0.8rem 1rem; margin-bottom: 0.5rem; background: var(--dark); border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
+        .options li:hover:not(.disabled) { background: var(--secondary); }
+        .options li.correct { background: var(--success); border-color: #52b788; }
+        .options li.wrong { background: var(--error); border-color: var(--primary); }
+        .options li.disabled { cursor: default; opacity: 0.7; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 8px; }
+        .explanation.show { display: block; }
+        .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
+        .explanation ul { margin-left: 1.5rem; }
+        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">🇮🇳 Desi<span>Throttle</span></a>
+        <nav class="nav"><a href="index.html">Home</a><a href="index.html#subjects">Subjects</a></nav>
+    </header>
+    <div class="container">
+        <h1>📋 Air Regulations — Question Bank</h1>
+        <p class="subtitle">220+ questions on DGCA CAR, ICAO, and regulations</p>
+        <div class="topic-nav">
+            <a href="#q1">DGCA CAR</a><a href="#q2">Licensing</a><a href="#q3">Airspace</a><a href="#q4">Rules of Air</a><a href="#q5">Permits</a><a href="#q6">Annexes</a>
+        </div>
+
+        <div class="question-card" id="q1">
+            <div class="question-number">Q1.</div>
+            <p class="question-text">What does CAR stand for in DGCA context?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Civil Aviation Regulations</li>
+                <li onclick="checkAnswer(this, true)">b) Civil Aviation Requirements</li>
+                <li onclick="checkAnswer(this, false)">c) Certified Aviation Rules</li>
+                <li onclick="checkAnswer(this, false)">d) Central Aviation Regulations</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
+            <div class="explanation" id="exp1">
+                <h4>✅ Answer: b — Civil Aviation Requirements</h4>
+                <ul>
+                    <li><strong>CAR</strong> = Civil Aviation Requirements</li>
+                    <li>Issued by DGCA India</li>
+                    <li>Covers: Flight operations, licensing, airworthiness, etc.</li>
+                    <li><strong>CAR Section 1</strong> — Airworthiness</li>
+                    <li><strong>CAR Section 2</strong> — Flying Training</li>
+                    <li><strong>CAR Section 3</strong> — Air Transport</li>
+                    <li><strong>CAR Section 8</strong> — Aerodrome Standards</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <div class="question-number">Q2.</div>
+            <p class="question-text">What is the minimum age for a DGCA CPL?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) 17 years</li>
+                <li onclick="checkAnswer(this, true)">b) 18 years</li>
+                <li onclick="checkAnswer(this, false)">c) 21 years</li>
+                <li onclick="checkAnswer(this, false)">d) 16 years</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
+            <div class="explanation" id="exp2">
+                <h4>✅ Answer: b — 18 years</h4>
+                <ul>
+                    <li><strong>CPL</strong> (Commercial Pilot License) — Minimum 18 years</li>
+                    <li><strong>PPL</strong> (Private Pilot License) — Minimum 17 years</li>
+                    <li><strong>Student Pilot</strong> — Minimum 16 years</li>
+                    <li>Additional requirements: Class 1 medical, 200 hrs flight time, written exams</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <div class="question-number">Q3.</div>
+            <p class="question-text">Class G airspace in India is:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Controlled airspace</li>
+                <li onclick="checkAnswer(this, true)">b) Uncontrolled airspace</li>
+                <li onclick="checkAnswer(this, false)">c) Restricted airspace</li>
+                <li onclick="checkAnswer(this, false)">d) Prohibited airspace</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
+            <div class="explanation" id="exp3">
+                <h4>✅ Answer: b — Uncontrolled</h4>
+                <ul>
+                    <li><strong>Class G</strong> = Uncontrolled (G = "Ground")</li>
+                    <li>No ATC control required</li>
+                    <li>Below FL195 in India (below 19,500ft)</li>
+                    <li><strong>Class C</strong> — Controlled (IFR required)</li>
+                    <li><strong>Class A</strong> — Above FL290 (always IFR)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <div class="question-number">Q4.</div>
+            <p class="question-text">Right-of-way rule: Two aircraft converging at same altitude?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Larger aircraft has right-of-way</li>
+                <li onclick="checkAnswer(this, true)">b) Aircraft on right has right-of-way</li>
+                <li onclick="checkAnswer(this, false)">c) Aircraft on left has right-of-way</li>
+                <li onclick="checkAnswer(this, false)">d) Both must yield to each other</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
+            <div class="explanation" id="exp4">
+                <h4>✅ Answer: b — Right has priority</h4>
+                <ul>
+                    <li><strong>Rule:</strong> "See and avoid"</li>
+                    <li><strong>Converging:</strong> Aircraft on RIGHT has priority</li>
+                    <li><strong>Overtaking:</strong> Overtaken aircraft has right-of-way</li>
+                    <li><strong>Landing:</strong> Aircraft on final has priority</li>
+                    <li><strong>Emergency:</strong> Aircraft in distress has priority</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q5">
+            <div class="question-number">Q5.</div>
+            <p class="question-text">Foreign registered aircraft needs permit to fly in India:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) No permit required</li>
+                <li onclick="checkAnswer(this, true)">b) Foreign Operator Permit (FOP)</li>
+                <li onclick="checkAnswer(this, false)">c) Only for cargo</li>
+                <li onclick="checkAnswer(this, false)">d) Only charter flights</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
+            <div class="explanation" id="exp5">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>FOP</strong> = Foreign Operator Permit</li>
+                    <li>Required for foreign-registered aircraft operating in India</li>
+                    <li>Issued by DGCA</li>
+                    <li>Also requires: Overflight permit, landing permit</li>
+                    <li><strong>SAF</strong> = Special Authorization Flight (for specific routes)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-card" id="q6">
+            <div class="question-number">Q6.</div>
+            <p class="question-text">ICAO Annex 2 deals with:</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Meteorology</li>
+                <li onclick="checkAnswer(this, true)">b) Rules of the Air</li>
+                <li onclick="checkAnswer(this, false)">c) Air Traffic Services</li>
+                <li onclick="checkAnswer(this, false)">d) Aerodromes</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp6')">Show Explanation</button>
+            <div class="explanation" id="exp6">
+                <h4>✅ Answer: b</h4>
+                <ul>
+                    <li><strong>Annex 1</strong> — Personnel Licensing</li>
+                    <li><strong>Annex 2</strong> — Rules of the Air ✓</li>
+                    <li><strong>Annex 3</strong> — Meteorology</li>
+                    <li><strong>Annex 6</strong> — Operation of Aircraft</li>
+                    <li><strong>Annex 14</strong> — Aerodromes</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer"><p>🇮🇳 Desi Throttle © 2026 | Made with ❤️ by Captain Pankaj & Nayki</p></footer>
+    <script>
+        function checkAnswer(element, isCorrect) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('li').forEach(opt => { opt.classList.add('disabled'); opt.style.pointerEvents = 'none'; });
+            element.classList.add(isCorrect ? 'correct' : 'wrong');
+            if (!isCorrect) { parent.querySelectorAll('li').forEach(opt => { if (opt.getAttribute('onclick').includes('true')) opt.classList.add('correct'); }); }
+        }
+        function toggleExplanation(id) { document.getElementById(id).classList.toggle('show'); }
+    </script>
+</body>
+</html>
