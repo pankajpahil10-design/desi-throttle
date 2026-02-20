@@ -6,45 +6,168 @@
     <title>Meteorology — Desi Throttle</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #1a1a2e; --light: #f1faee; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; }
-        .header { background: linear-gradient(135deg, var(--secondary), var(--dark)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); }
-        .logo { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
-        .logo span { color: var(--accent); }
-        .nav a { color: var(--light); text-decoration: none; margin-left: 1.5rem; }
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #a8dadc;
+            --dark: #0d1b2a;
+            --darker: #1b263b;
+            --light: #e0e1dd;
+            --success: #2d6a4f;
+            --error: #9d0208;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(90deg, var(--darker), var(--secondary));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--light);
+        }
+        .logo span { color: var(--primary); }
+        .nav { display: flex; gap: 1.5rem; }
+        .nav a { color: var(--light); text-decoration: none; font-weight: 500; }
         .nav a:hover { color: var(--primary); }
+        
         .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
-        h1 { color: var(--accent); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
-        .question-card { background: #16213e; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
-        .question-text { font-size: 1.1rem; margin-bottom: 1rem; }
+        h1 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        .subtitle { color: #8892a0; margin-bottom: 2rem; }
+        
+        .topic-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--darker);
+            border-radius: 10px;
+        }
+        .topic-nav a {
+            padding: 0.4rem 1rem;
+            background: var(--secondary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .topic-nav a:hover { background: var(--primary); }
+        
+        .question-card {
+            background: var(--darker);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+        .question-number {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
+        .question-text code {
+            background: var(--dark);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent);
+        }
+        
         .options { list-style: none; }
-        .options li { padding: 0.75rem; margin-bottom: 0.5rem; background: #1a1a2e; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-        .options li:hover { background: #2a3f5f; }
-        .options li.correct { background: #2d6a4f; border: 1px solid #52b788; }
-        .options li.wrong { background: #6a040f; border: 1px solid #e63946; }
-        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: #1d3557; border-radius: 8px; }
+        .options li {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--dark);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .options li:hover:not(.disabled) {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+        .options li.correct {
+            background: var(--success);
+            border-color: #52b788;
+        }
+        .options li.wrong {
+            background: var(--error);
+            border-color: var(--primary);
+        }
+        .options li.disabled { cursor: default; opacity: 0.7; }
+        
+        .explanation {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 8px;
+        }
         .explanation.show { display: block; }
         .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
-        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+        .explanation ul { margin-left: 1.5rem; }
+        .explanation li { margin-bottom: 0.3rem; }
+        
+        .reveal-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-weight: 500;
+        }
         .reveal-btn:hover { background: #c1121f; }
-        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
-        .topic-nav a { padding: 0.5rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.9rem; }
-        .topic-nav a:hover { background: var(--primary); }
-        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 600px) {
+            .header { flex-direction: column; gap: 1rem; }
+            h1 { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="logo">🇮🇳 Desi<span>Throttle</span></div>
+        <a href="index.html" class="logo">🇮🇳 Desi<span>Throttle</span></a>
         <nav class="nav">
-            <a href="./index.html">Home</a>
-            <a href="./question-bank.html">Question Bank</a>
-            <a href="./subjects.html">Subjects</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#subjects">Subjects</a>
         </nav>
     </header>
 
     <div class="container">
         <h1>🌦️ Meteorology — Question Bank</h1>
+        <p class="subtitle">250+ questions on weather for DGCA CPL/ATPL exams</p>
         
         <div class="topic-nav">
             <a href="#q1">METAR/TAF</a>
@@ -52,38 +175,44 @@
             <a href="#q3">Wind</a>
             <a href="#q4">Thunderstorms</a>
             <a href="#q5">Pressure</a>
+            <a href="#q6">Visibility</a>
+            <a href="#q7">Altimeter</a>
+            <a href="#q8">ICAO</a>
         </div>
 
+        <!-- Question 1 -->
         <div class="question-card" id="q1">
-            <p class="question-text"><strong>Q1.</strong> Decode the following METAR: <code>METAR VABB 201730Z 24015KT 9999 FEW025 SCT040 BKN100 32/24 Q1006</code></p>
+            <div class="question-number">Q1.</div>
+            <p class="question-text">Decode METAR: <code>METAR VABB 201730Z 24015KT 9999 FEW025 SCT040 BKN100 32/24 Q1006</code></p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Surface wind 240° at 15 knots, visibility 10km+, few clouds at 2500ft, scattered 4000ft, overcast 10000ft, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
-                <li onclick="checkAnswer(this, false)">b) Surface wind 240° at 150 knots, visibility 9999m, few clouds at 2500ft, scattered 4000ft, broken 10000ft, temperature 32°F, dewpoint 24°F, QNH 1006 hPa</li>
-                <li onclick="checkAnswer(this, true)">c) Surface wind 240° at 15 knots, visibility more than 10km, few clouds at 2500ft, scattered 4000ft, broken 10000ft, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
-                <li onclick="checkAnswer(this, false)">d) Surface wind 240° at 1500 feet, visibility 9999m, few clouds at 2500m, scattered 4000m, broken 10000m, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
+                <li onclick="checkAnswer(this, false)">a) Wind 240° at 15kt, vis 10km, few @2500ft, scat @4000ft, overcast @10000ft, temp 32°C, dew 24°C, QNH 1006hPa</li>
+                <li onclick="checkAnswer(this, false)">b) Wind 240° at 150kt, vis 9999m, few @2500ft, scat @4000ft, broken @10000ft, temp 32°F, dew 24°F, QNH 1006hPa</li>
+                <li onclick="checkAnswer(this, true)">c) Wind 240° at 15kt, vis >10km, few @2500ft, scat @4000ft, broken @10000ft, temp 32°C, dew 24°C, QNH 1006hPa</li>
+                <li onclick="checkAnswer(this, false)">d) Wind 240° at 1500ft, vis 9999m, few @2500m, scat @4000m, broken @10000m, temp 32°C, dew 24°C, QNH 1006hPa</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
             <div class="explanation" id="exp1">
-                <h4>✅ Correct Answer: c</h4>
-                <p><strong>METAR Decoding:</strong></p>
+                <h4>✅ Answer: c</h4>
                 <ul>
-                    <li><code>METAR</code> — Aviation routine weather report</li>
-                    <li><code>VABB</code> — Mumbai airport ICAO code</li>
-                    <li><code>201730Z</code> — 20th day, 1730Z time</li>
-                    <li><code>24015KT</code> — Wind from 240° at 15 knots</li>
-                    <li><code>9999</code> — Visibility more than 10km (or 9999m in some formats)</li>
-                    <li><code>FEW025</code> — Few clouds at 2500ft</li>
-                    <li><code>SCT040</code> — Scattered clouds at 4000ft</li>
-                    <li><code>BKN100</code> — Broken clouds at 10000ft</li>
-                    <li><code>32/24</code> — Temperature 32°C / Dewpoint 24°C</li>
-                    <li><code>Q1006</code> — QNH 1006 hPa</li>
+                    <li><strong>METAR</strong> — Aviation routine weather report</li>
+                    <li><strong>VABB</strong> — Mumbai Chhatrapati Shivaji ICAO code</li>
+                    <li><strong>201730Z</strong> — 20th, 1730Z UTC</li>
+                    <li><strong>24015KT</strong> — Wind from 240° at 15 knots</li>
+                    <li><strong>9999</strong> — Visibility >10km (or 9999m)</li>
+                    <li><strong>FEW025</strong> — Few clouds at 2500ft</li>
+                    <li><strong>SCT040</strong> — Scattered at 4000ft</li>
+                    <li><strong>BKN100</strong> — Broken at 10000ft</li>
+                    <li><strong>32/24</strong> — Temp 32°C / Dewpoint 24°C</li>
+                    <li><strong>Q1006</strong> — QNH 1006 hPa</li>
                 </ul>
-                <p><strong>Key:</strong> METAR uses feet for altitude (A001), knots for wind (KT), and °C for temperature.</p>
+                <p><strong>Key:</strong> METAR uses feet (A001), knots (KT), °C.</p>
             </div>
         </div>
 
+        <!-- Question 2 -->
         <div class="question-card" id="q2">
-            <p class="question-text"><strong>Q2.</strong> Which cloud type is associated with severe turbulence and thunderstorms?</p>
+            <div class="question-number">Q2.</div>
+            <p class="question-text">Which cloud type is associated with severe turbulence, lightning, and thunderstorms?</p>
             <ul class="options">
                 <li onclick="checkAnswer(this, false)">a) Stratus (ST)</li>
                 <li onclick="checkAnswer(this, true)">b) Cumulonimbus (CB)</li>
@@ -92,44 +221,48 @@
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
             <div class="explanation" id="exp2">
-                <h4>✅ Correct Answer: b</h4>
-                <p><strong>Cumulonimbus (CB)</strong> is the only cloud type that produces:</p>
+                <h4>✅ Answer: b — Cumulonimbus (CB)</h4>
+                <p>CB is the ONLY cloud type that produces:</p>
                 <ul>
-                    <li>⚡ Lightning / Thunderstorms</li>
+                    <li>⚡ Lightning / Thunder</li>
                     <li>🌪️ Severe turbulence</li>
                     <li>🌧️ Heavy precipitation</li>
                     <li>🧊 Hail</li>
                     <li>💨 Wind shear</li>
                 </ul>
-                <p><strong>Remember:</strong> CB clouds can extend from surface to above 40,000ft. Never fly through or near CB clouds!</p>
+                <p><strong>Critical:</strong> CB extends from surface to 40,000ft+. NEVER fly through or near CB!</p>
             </div>
         </div>
 
+        <!-- Question 3 -->
         <div class="question-card" id="q3">
-            <p class="question-text"><strong>Q3.</strong> An aircraft is flying on a heading of 360° (North) with true airspeed (TAS) of 120 knots. Wind is from 270° at 40 knots. What is the ground speed (GS)?</p>
+            <div class="question-number">Q3.</div>
+            <p class="question-text">Aircraft flying heading 360° (N) with TAS 120kt. Wind from 270° at 40kt. Calculate Ground Speed.</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 80 knots</li>
-                <li onclick="checkAnswer(this, true)">b) 160 knots</li>
-                <li onclick="checkAnswer(this, false)">c) 120 knots</li>
-                <li onclick="checkAnswer(this, false)">d) 40 knots</li>
+                <li onclick="checkAnswer(this, false)">a) 80 kt</li>
+                <li onclick="checkAnswer(this, true)">b) 160 kt</li>
+                <li onclick="checkAnswer(this, false)">c) 120 kt</li>
+                <li onclick="checkAnswer(this, false)">d) 40 kt</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
             <div class="explanation" id="exp3">
-                <h4>✅ Correct Answer: b — 160 knots</h4>
-                <p><strong>Wind Triangle Calculation:</strong></p>
+                <h4>✅ Answer: b — 160 knots</h4>
+                <p><strong>Wind Triangle:</strong></p>
                 <ul>
-                    <li>HDG: 360° (North)</li>
-                    <li>W/V: From 270° (West) at 40kt → Wind is blowing FROM West TO East</li>
+                    <li>Heading: 360° (North)</li>
+                    <li>Wind: From 270° (West) at 40kt</li>
                     <li>TAS: 120kt</li>
                 </ul>
-                <p>Since wind is from 270° (full tailwind for northbound aircraft), it adds to TAS:</p>
-                <p><strong>GS = TAS + Wind Component = 120 + 40 = 160 knots</strong></p>
-                <p><strong>Formula:</strong> Headwind/Tailwind component = Wind Speed × cos(angle between wind and heading)</p>
+                <p>Wind FROM West = Tailwind for northbound aircraft.</p>
+                <p><strong>GS = TAS + Tailwind = 120 + 40 = 160 kt</strong></p>
+                <p><strong>Formula:</strong> Head/Tail component = WS × cos(angle from heading)</p>
             </div>
         </div>
 
+        <!-- Question 4 -->
         <div class="question-card" id="q4">
-            <p class="question-text"><strong>Q4.</strong> What is the minimum visibility requirement for VFR flight in Class G airspace below 10,000ft MSL in India during daytime?</p>
+            <div class="question-number">Q4.</div>
+            <p class="question-text">What is the minimum visibility for VFR in Class G airspace below 10,000ft MSL in India (day)?</p>
             <ul class="options">
                 <li onclick="checkAnswer(this, false)">a) 1 km</li>
                 <li onclick="checkAnswer(this, false)">b) 3 km</li>
@@ -138,37 +271,120 @@
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
             <div class="explanation" id="exp4">
-                <h4>✅ Correct Answer: c — 5 km</h4>
-                <p><strong>As per CAR Section 3, Series M, Part I:</strong></p>
+                <h4>✅ Answer: c — 5 km</h4>
+                <p><strong>As per DGCA CAR Section 3, Series M, Part I:</strong></p>
                 <ul>
-                    <li><strong>Daytime in Class G:</strong> 5 km visibility</li>
-                    <li><strong>Nighttime in Class G:</strong> 5 km visibility</li>
+                    <li><strong>Class G (Day):</strong> 5 km</li>
+                    <li><strong>Class G (Night):</strong> 5 km</li>
                     <li><strong>Below 1000ft AGL:</strong> 5 km recommended</li>
                 </ul>
-                <p><strong>Note:</strong> Different visibility requirements apply for different airspace classes. Always check latest DGCA CAR!</p>
+                <p>Note: Different visibility rules apply for other airspace classes.</p>
             </div>
         </div>
 
+        <!-- Question 5 -->
         <div class="question-card" id="q5">
-            <p class="question-text"><strong>Q5.</strong> At standard atmosphere, what is the relationship between pressure altitude and density altitude?</p>
+            <div class="question-number">Q5.</div>
+            <p class="question-text">At standard atmosphere, what is the relationship between pressure altitude and density altitude?</p>
             <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Pressure altitude is always higher than density altitude</li>
-                <li onclick="checkAnswer(this, true)">b) They are equal at standard conditions (ISA)</li>
-                <li onclick="checkAnswer(this, false)">c) Density altitude is always lower than pressure altitude</li>
+                <li onclick="checkAnswer(this, false)">a) Pressure altitude always > density altitude</li>
+                <li onclick="checkAnswer(this, true)">b) Equal at ISA conditions</li>
+                <li onclick="checkAnswer(this, false)">c) Density altitude always < pressure altitude</li>
                 <li onclick="checkAnswer(this, false)">d) They are unrelated</li>
             </ul>
             <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
             <div class="explanation" id="exp5">
-                <h4>✅ Correct Answer: b</h4>
-                <p><strong>At ISA (International Standard Atmosphere) conditions:</strong></p>
+                <h4>✅ Answer: b — Equal at ISA</h4>
+                <p><strong>At ISA (International Standard Atmosphere):</strong></p>
                 <ul>
                     <li>Sea level pressure: 1013.25 hPa</li>
-                    <li>Sea level temperature: +15°C</li>
-                    <li>Lapse rate: -2°C per 1000ft</li>
+                    <li>Sea level temp: +15°C</li>
+                    <li>Lapse rate: -2°C/1000ft</li>
                 </ul>
-                <p>Under these conditions, <strong>Pressure Altitude = Density Altitude</strong></p>
-                <p><strong>When temperature is higher than ISA:</strong> Density altitude > Pressure altitude (air is less dense = performs like higher altitude)</p>
-                <p><strong>When temperature is lower than ISA:</strong> Density altitude < Pressure altitude</p>
+                <p>At ISA: <strong>Pressure Altitude = Density Altitude</strong></p>
+                <p>Hotter than ISA: <strong>DA > PA</strong> (air less dense)</p>
+                <p>Colder than ISA: <strong>DA < PA</strong></p>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-card" id="q6">
+            <div class="question-number">Q6.</div>
+            <p class="question-text">What does RVR stand for, and how is it measured?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Runway Visual Range - measured by anemometer</li>
+                <li onclick="checkAnswer(this, true)">b) Runway Visual Range - measured by transmissometer</li>
+                <li onclick="checkAnswer(this, false)">c) Radar Visual Range - measured by radar</li>
+                <li onclick="checkAnswer(this, false)">d) Required Visual Range - pilot's requirement</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp6')">Show Explanation</button>
+            <div class="explanation" id="exp6">
+                <h4>✅ Answer: b</h4>
+                <p><strong>RVR (Runway Visual Range)</strong> is:</p>
+                <ul>
+                    <li>Distance a pilot can see down the runway</li>
+                    <li>Measured by <strong>transmissometer</strong> or <strong>RVR sensor</strong></li>
+                    <li>Displayed in meters (not feet)</li>
+                    <li>Used for Category I, II, III ILS approaches</li>
+                </ul>
+                <p><strong>Remember:</strong> RVR replaces visibility for precision approaches.</p>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-card" id="q7">
+            <div class="question-number">Q7.</div>
+            <p class="question-text">An aircraft altimeter is set to QNH 1013 hPa at an aerodrome elevation of 500ft. What does the altimeter read?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) 0 ft</li>
+                <li onclick="checkAnswer(this, true)">b) 500 ft</li>
+                <li onclick="checkAnswer(this, false)">c) 1000 ft</li>
+                <li onclick="checkAnswer(this, false)">d) Indeterminate</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp7')">Show Explanation</button>
+            <div class="explanation" id="exp7">
+                <h4>✅ Answer: b — 500 ft</h4>
+                <p><strong>QNH</strong> = Altimeter setting that gives elevation when on ground.</p>
+                <ul>
+                    <li>Set QNH → Altimeter reads aerodrome elevation</li>
+                    <li>At sea level aerodrome with QNH 1013 → reads 0ft</li>
+                    <li>At 500ft elevation with correct QNH → reads 500ft</li>
+                </ul>
+                <p><strong>Key:</strong> QNH is calibrated to read field elevation when landed.</p>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-card" id="q8">
+            <div class="question-number">Q8.</div>
+            <p class="question-text">Which ICAO Annex deals with Meteorology?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Annex 1 - Personnel Licensing</li>
+                <li onclick="checkAnswer(this, false)">b) Annex 3 - Meteorological Service</li>
+                <li onclick="checkAnswer(this, true)">c) Annex 3 - Meteorological Service for International Air Navigation</li>
+                <li onclick="checkAnswer(this, false)">d) Annex 5 - Units of Measurement</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp8')">Show Explanation</button>
+            <div class="explanation" id="exp8">
+                <h4>✅ Answer: c</h4>
+                <p><strong>ICAO Annex 3</strong> — Meteorological Service for International Air Navigation</p>
+                <ul>
+                    <li>Annex 1 — Personnel Licensing</li>
+                    <li>Annex 2 — Rules of the Air</li>
+                    <li>Annex 3 — Meteorology ✓</li>
+                    <li>Annex 4 — Aeronautical Charts</li>
+                    <li>Annex 5 — Units of Measurement</li>
+                    <li>Annex 6 — Operation of Aircraft</li>
+                    <li>Annex 7 — Aircraft Nationality Marks</li>
+                    <li>Annex 8 — Airworthiness</li>
+                    <li>Annex 9 — Facilitation</li>
+                    <li>Annex 10 — Aeronautical Communications</li>
+                    <li>Annex 11 — Air Traffic Services</li>
+                    <li>Annex 12 — Search and Rescue</li>
+                    <li>Annex 13 — Aircraft Accident Investigation</li>
+                    <li>Annex 14 — Aerodromes</li>
+                    <li>Annex 15 — Aeronautical Information Services</li>
+                </ul>
             </div>
         </div>
 
@@ -183,11 +399,10 @@
             const parent = element.parentElement;
             const allOptions = parent.querySelectorAll('li');
             allOptions.forEach(opt => {
+                opt.classList.add('disabled');
                 opt.style.pointerEvents = 'none';
-                if (opt === element) {
-                    opt.classList.add(isCorrect ? 'correct' : 'wrong');
-                }
             });
+            element.classList.add(isCorrect ? 'correct' : 'wrong');
             if (!isCorrect) {
                 allOptions.forEach(opt => {
                     if (opt.getAttribute('onclick').includes('true')) {
