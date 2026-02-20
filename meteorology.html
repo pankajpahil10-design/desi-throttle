@@ -1,10 +1,206 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ghost Aviator — Meteorology (DGCA CPL/IR)</title><style>body{font-family:Segoe UI,Arial;background:#0b1220;color:#e8efff;margin:0;line-height:1.55}.wrap{max-width:1050px;margin:auto;padding:24px}.card{background:#121d33;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px;margin:12px 0}h1,h2{margin:.3rem 0}.muted{color:#a9b9d8}.eq{background:#0e1730;padding:10px;border-radius:8px;margin:8px 0;color:#c8dbff}a{color:#7db4ff}ul li{margin:6px 0}</style></head><body><div class="wrap"><h1>Aviation Meteorology — CPL/ATPL Depth</h1><p class="muted"><strong>Aligned to:</strong> DGCA CAR Section 7, Series B, Part IV (Appendix B) + ICAO knowledge framework. Built for exam performance and operational decision quality.</p>
-<div class="card"><h2>1) Atmosphere, Thermodynamics, and Stability</h2><p>Operational meteorology starts with energy behavior in air masses. For flight planning and risk judgment, pilots must understand lapse rates and static stability, not just cloud names.</p><div class="eq"><strong>Core relationships:</strong><br>Pressure decreases with altitude; density depends on pressure and temperature.<br>ISA baseline at MSL: 15°C, 1013.25 hPa.<br>Approximate ISA lapse in troposphere: ~2°C / 1000 ft.</div><p><strong>Stability logic:</strong> Compare environmental lapse rate with adiabatic lapse behavior. Stable profiles suppress vertical development (layer cloud bias); unstable profiles support vertical cloud growth, convection, and turbulence risk.</p></div>
-<div class="card"><h2>2) Pressure Systems and Wind Mechanics</h2><p>Wind is governed by pressure-gradient force, Coriolis deflection, and friction. Aloft, near-balance states produce near-isobaric flow; near surface, friction drives cross-isobar inflow toward low pressure.</p><ul><li><strong>Geostrophic tendency:</strong> pressure gradient balanced by Coriolis (idealized, frictionless).</li><li><strong>Surface wind:</strong> lower speed, greater isobar crossing angle, stronger convergence near lows.</li><li><strong>Operational output:</strong> crosswind planning, drift correction, and frontal passage interpretation.</li></ul></div>
-<div class="card"><h2>3) Cloud/Fog Physics and Visibility Risk</h2><p>Cloud/fog formation is a thermodynamic lifting-cooling process to saturation. Distinguish mechanisms because each implies different persistence and runway impact.</p><ul><li><strong>Radiation fog:</strong> nocturnal cooling over land, weak wind regime.</li><li><strong>Advection fog:</strong> warm moist air over colder surface, often persistent.</li><li><strong>Frontal/upslope processes:</strong> may degrade alternates and increase holding/approach uncertainty.</li></ul></div>
-<div class="card"><h2>4) Fronts, Convection, and Severe Hazards</h2><p>Frontal geometry controls uplift style and hazard profile. Cold-front dynamics tend toward abrupt uplift and convective risk; warm-front structure often drives broader stratiform cloud and prolonged reduced ceiling/visibility.</p><ul><li><strong>CB / TS hazards:</strong> severe turbulence, hail, lightning, wind shear, microburst.</li><li><strong>LLWS/microburst:</strong> critical at takeoff/landing; performance margins can collapse rapidly.</li><li><strong>Pilot action:</strong> strategic avoidance and conservative alternate/fuel decisions.</li></ul></div>
-<div class="card"><h2>5) Icing, Turbulence, Jet Streams</h2><p>Icing and turbulence are performance and controllability threats. Risk is state-dependent: moisture phase, droplet size regime, temperature band, and flow structure all matter.</p><ul><li><strong>Icing envelope (operational):</strong> visible moisture + sub-zero band, with largest risk in supercooled liquid regimes.</li><li><strong>Turbulence classes:</strong> mechanical, convective, clear-air (jet associated).</li><li><strong>Jet stream relevance:</strong> time/fuel optimization vs CAT exposure management.</li></ul></div>
-<div class="card"><h2>6) Altimetry and Non-Standard Atmosphere Errors</h2><p>Altimetry error discipline is non-negotiable in instrument operations. Pressure setting and thermal deviation both alter terrain/obstacle margins.</p><div class="eq"><strong>Remember:</strong> In colder-than-ISA conditions, true altitude is lower than indicated for a given pressure surface (risk of reduced clearance).</div><ul><li><strong>QNH:</strong> MSL-referenced indication on ground.</li><li><strong>QFE:</strong> airfield-reference zeroing concept.</li><li><strong>QNE:</strong> 1013.25 hPa for flight levels.</li></ul></div>
-<div class="card"><h2>7) METAR/TAF/SIGMET — Decision Use</h2><p>Exam success requires decoding. Professional performance requires decision integration: trend awareness, confidence limits, alternate suitability, and contingency fuel implications.</p><ul><li>Parse weather groups in operational sequence.</li><li>Track trend/probability groups for deterioration windows.</li><li>Convert decoded weather into dispatch/route/approach risk controls.</li></ul></div>
-<div class="card"><h2>8) DGCA Exam Layer (How to score + retain)</h2><ul><li>Concept-first memory: do not memorize isolated facts without mechanism.</li><li>Error-log method: classify mistakes into physics, interpretation, or procedural logic.</li><li>Scenario drills: convert each concept into a flight-decision context question.</li></ul></div>
-<div class="card"><p><a href="./index.html">← Back Home</a></p></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteorology — Desi Throttle</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #1a1a2e; --light: #f1faee; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; }
+        .header { background: linear-gradient(135deg, var(--secondary), var(--dark)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); }
+        .logo { font-size: 1.8rem; font-weight: bold; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav a { color: var(--light); text-decoration: none; margin-left: 1.5rem; }
+        .nav a:hover { color: var(--primary); }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+        h1 { color: var(--accent); margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
+        .question-card { background: #16213e; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
+        .question-text { font-size: 1.1rem; margin-bottom: 1rem; }
+        .options { list-style: none; }
+        .options li { padding: 0.75rem; margin-bottom: 0.5rem; background: #1a1a2e; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+        .options li:hover { background: #2a3f5f; }
+        .options li.correct { background: #2d6a4f; border: 1px solid #52b788; }
+        .options li.wrong { background: #6a040f; border: 1px solid #e63946; }
+        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: #1d3557; border-radius: 8px; }
+        .explanation.show { display: block; }
+        .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
+        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
+        .reveal-btn:hover { background: #c1121f; }
+        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+        .topic-nav a { padding: 0.5rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.9rem; }
+        .topic-nav a:hover { background: var(--primary); }
+        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🇮🇳 Desi<span>Throttle</span></div>
+        <nav class="nav">
+            <a href="./index.html">Home</a>
+            <a href="./question-bank.html">Question Bank</a>
+            <a href="./subjects.html">Subjects</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>🌦️ Meteorology — Question Bank</h1>
+        
+        <div class="topic-nav">
+            <a href="#q1">METAR/TAF</a>
+            <a href="#q2">Clouds</a>
+            <a href="#q3">Wind</a>
+            <a href="#q4">Thunderstorms</a>
+            <a href="#q5">Pressure</a>
+        </div>
+
+        <div class="question-card" id="q1">
+            <p class="question-text"><strong>Q1.</strong> Decode the following METAR: <code>METAR VABB 201730Z 24015KT 9999 FEW025 SCT040 BKN100 32/24 Q1006</code></p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Surface wind 240° at 15 knots, visibility 10km+, few clouds at 2500ft, scattered 4000ft, overcast 10000ft, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
+                <li onclick="checkAnswer(this, false)">b) Surface wind 240° at 150 knots, visibility 9999m, few clouds at 2500ft, scattered 4000ft, broken 10000ft, temperature 32°F, dewpoint 24°F, QNH 1006 hPa</li>
+                <li onclick="checkAnswer(this, true)">c) Surface wind 240° at 15 knots, visibility more than 10km, few clouds at 2500ft, scattered 4000ft, broken 10000ft, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
+                <li onclick="checkAnswer(this, false)">d) Surface wind 240° at 1500 feet, visibility 9999m, few clouds at 2500m, scattered 4000m, broken 10000m, temperature 32°C, dewpoint 24°C, QNH 1006 hPa</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
+            <div class="explanation" id="exp1">
+                <h4>✅ Correct Answer: c</h4>
+                <p><strong>METAR Decoding:</strong></p>
+                <ul>
+                    <li><code>METAR</code> — Aviation routine weather report</li>
+                    <li><code>VABB</code> — Mumbai airport ICAO code</li>
+                    <li><code>201730Z</code> — 20th day, 1730Z time</li>
+                    <li><code>24015KT</code> — Wind from 240° at 15 knots</li>
+                    <li><code>9999</code> — Visibility more than 10km (or 9999m in some formats)</li>
+                    <li><code>FEW025</code> — Few clouds at 2500ft</li>
+                    <li><code>SCT040</code> — Scattered clouds at 4000ft</li>
+                    <li><code>BKN100</code> — Broken clouds at 10000ft</li>
+                    <li><code>32/24</code> — Temperature 32°C / Dewpoint 24°C</li>
+                    <li><code>Q1006</code> — QNH 1006 hPa</li>
+                </ul>
+                <p><strong>Key:</strong> METAR uses feet for altitude (A001), knots for wind (KT), and °C for temperature.</p>
+            </div>
+        </div>
+
+        <div class="question-card" id="q2">
+            <p class="question-text"><strong>Q2.</strong> Which cloud type is associated with severe turbulence and thunderstorms?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Stratus (ST)</li>
+                <li onclick="checkAnswer(this, true)">b) Cumulonimbus (CB)</li>
+                <li onclick="checkAnswer(this, false)">c) Cirrus (CI)</li>
+                <li onclick="checkAnswer(this, false)">d) Altostratus (AS)</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
+            <div class="explanation" id="exp2">
+                <h4>✅ Correct Answer: b</h4>
+                <p><strong>Cumulonimbus (CB)</strong> is the only cloud type that produces:</p>
+                <ul>
+                    <li>⚡ Lightning / Thunderstorms</li>
+                    <li>🌪️ Severe turbulence</li>
+                    <li>🌧️ Heavy precipitation</li>
+                    <li>🧊 Hail</li>
+                    <li>💨 Wind shear</li>
+                </ul>
+                <p><strong>Remember:</strong> CB clouds can extend from surface to above 40,000ft. Never fly through or near CB clouds!</p>
+            </div>
+        </div>
+
+        <div class="question-card" id="q3">
+            <p class="question-text"><strong>Q3.</strong> An aircraft is flying on a heading of 360° (North) with true airspeed (TAS) of 120 knots. Wind is from 270° at 40 knots. What is the ground speed (GS)?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) 80 knots</li>
+                <li onclick="checkAnswer(this, true)">b) 160 knots</li>
+                <li onclick="checkAnswer(this, false)">c) 120 knots</li>
+                <li onclick="checkAnswer(this, false)">d) 40 knots</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
+            <div class="explanation" id="exp3">
+                <h4>✅ Correct Answer: b — 160 knots</h4>
+                <p><strong>Wind Triangle Calculation:</strong></p>
+                <ul>
+                    <li>HDG: 360° (North)</li>
+                    <li>W/V: From 270° (West) at 40kt → Wind is blowing FROM West TO East</li>
+                    <li>TAS: 120kt</li>
+                </ul>
+                <p>Since wind is from 270° (full tailwind for northbound aircraft), it adds to TAS:</p>
+                <p><strong>GS = TAS + Wind Component = 120 + 40 = 160 knots</strong></p>
+                <p><strong>Formula:</strong> Headwind/Tailwind component = Wind Speed × cos(angle between wind and heading)</p>
+            </div>
+        </div>
+
+        <div class="question-card" id="q4">
+            <p class="question-text"><strong>Q4.</strong> What is the minimum visibility requirement for VFR flight in Class G airspace below 10,000ft MSL in India during daytime?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) 1 km</li>
+                <li onclick="checkAnswer(this, false)">b) 3 km</li>
+                <li onclick="checkAnswer(this, true)">c) 5 km</li>
+                <li onclick="checkAnswer(this, false)">d) 10 km</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
+            <div class="explanation" id="exp4">
+                <h4>✅ Correct Answer: c — 5 km</h4>
+                <p><strong>As per CAR Section 3, Series M, Part I:</strong></p>
+                <ul>
+                    <li><strong>Daytime in Class G:</strong> 5 km visibility</li>
+                    <li><strong>Nighttime in Class G:</strong> 5 km visibility</li>
+                    <li><strong>Below 1000ft AGL:</strong> 5 km recommended</li>
+                </ul>
+                <p><strong>Note:</strong> Different visibility requirements apply for different airspace classes. Always check latest DGCA CAR!</p>
+            </div>
+        </div>
+
+        <div class="question-card" id="q5">
+            <p class="question-text"><strong>Q5.</strong> At standard atmosphere, what is the relationship between pressure altitude and density altitude?</p>
+            <ul class="options">
+                <li onclick="checkAnswer(this, false)">a) Pressure altitude is always higher than density altitude</li>
+                <li onclick="checkAnswer(this, true)">b) They are equal at standard conditions (ISA)</li>
+                <li onclick="checkAnswer(this, false)">c) Density altitude is always lower than pressure altitude</li>
+                <li onclick="checkAnswer(this, false)">d) They are unrelated</li>
+            </ul>
+            <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
+            <div class="explanation" id="exp5">
+                <h4>✅ Correct Answer: b</h4>
+                <p><strong>At ISA (International Standard Atmosphere) conditions:</strong></p>
+                <ul>
+                    <li>Sea level pressure: 1013.25 hPa</li>
+                    <li>Sea level temperature: +15°C</li>
+                    <li>Lapse rate: -2°C per 1000ft</li>
+                </ul>
+                <p>Under these conditions, <strong>Pressure Altitude = Density Altitude</strong></p>
+                <p><strong>When temperature is higher than ISA:</strong> Density altitude > Pressure altitude (air is less dense = performs like higher altitude)</p>
+                <p><strong>When temperature is lower than ISA:</strong> Density altitude < Pressure altitude</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>🇮🇳 Desi Throttle © 2026 | Made with ❤️ by Captain Pankaj & Nayki</p>
+    </footer>
+
+    <script>
+        function checkAnswer(element, isCorrect) {
+            const parent = element.parentElement;
+            const allOptions = parent.querySelectorAll('li');
+            allOptions.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                if (opt === element) {
+                    opt.classList.add(isCorrect ? 'correct' : 'wrong');
+                }
+            });
+            if (!isCorrect) {
+                allOptions.forEach(opt => {
+                    if (opt.getAttribute('onclick').includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                });
+            }
+        }
+        
+        function toggleExplanation(id) {
+            const exp = document.getElementById(id);
+            exp.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
