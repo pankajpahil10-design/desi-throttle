@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communications - DGCA Question Bank</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; padding: 1rem; }
+        .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
+        .header h1 { color: var(--primary); font-size: 2rem; }
+        .header a { color: var(--accent); text-decoration: none; }
+        .question { background: var(--darker); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .options { margin: 1rem 0; }
+        .option { padding: 0.8rem; margin: 0.5rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; }
+        .option:hover { background: var(--secondary); }
+        .answer { display: none; margin-top: 1rem; padding: 1rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
+        .answer.show { display: block; }
+        .answer strong { color: var(--primary); }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
+        .tabs { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .tab { padding: 0.5rem 1rem; background: var(--darker); border: none; color: var(--light); cursor: pointer; border-radius: 4px; }
+        .tab.active { background: var(--primary); }
+        .question-set { display: none; }
+        .question-set.active { display: block; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <div class="header">
+        <h1>📻 Communications (Oxford ATPL)</h1>
+        <p>60 Questions | Source: Oxford Aviation Books | <a href="index.html">Home</a></p>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="showTab('vfr')">VFR (30)</button>
+        <button class="tab" onclick="showTab('ifr')">IFR (30)</button>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.question-set').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }
+    </script>
+
+    <!-- VFR Questions -->
+    <div id="vfr" class="question-set active">
+    <div class="question">
+        <h3>1. Callsign CHEROKEE XY-ABC abbreviation:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(1)">a. XY-BC</div>
+            <div class="option" onclick="toggle(1)">b. CHEROKEE XY-BC</div>
+            <div class="option" onclick="toggle(1)">c. CHEROKEE BC</div>
+            <div class="option" onclick="toggle(1)">d. ABC</div>
+        </div>
+        <div class="answer" id="a1">
+            <strong>Answer: c. CHEROKEE BC</strong>
+            <p>Standard ICAO - type + registration suffix.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>2. Q code TRUE BEARING:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(2)">a. QDR</div>
+            <div class="option" onclick="toggle(2)">b. QFE</div>
+            <div class="option" onclick="toggle(2)">c. QUJ</div>
+            <div class="option" onclick="toggle(2)">d. QTE</div>
+        </div>
+        <div class="answer" id="a2"><strong>Answer: d. QTE</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>3. DISTRESS definition:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(3)">a. concern, no immediate help</div>
+            <div class="option" onclick="toggle(3)">b. imminent danger</div>
+            <div class="option" onclick="toggle(3)">c. aircraft crashed</div>
+            <div class="option" onclick="toggle(3)">d. hijacked</div>
+        </div>
+        <div class="answer" id="a3"><strong>Answer: b. imminent danger - MAYDAY</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>4. URGENCY words:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(4)">a. Urgency x3</div>
+            <div class="option" onclick="toggle(4)">b. Pan Pan x2</div>
+            <div class="option" onclick="toggle(4)">c. Pan Pan</div>
+            <div class="option" onclick="toggle(4)">d. Mayday x3</div>
+        </div>
+        <div class="answer" id="a4"><strong>Answer: b. Pan Pan Pan Pan</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>5. Q code height based on:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(5)">a. QNH</div>
+            <div class="option" onclick="toggle(5)">b. QFF</div>
+            <div class="option" onclick="toggle(5)">c. QFE</div>
+            <div class="option" onclick="toggle(5)">d. QUJ</div>
+        </div>
+        <div class="answer" id="a5"><strong>Answer: c. QFE</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>6. 7600 on transponder:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(6)">a. Loss of comms</div>
+            <div class="option" onclick="toggle(6)">b. Distress</div>
+            <div class="option" onclick="toggle(6)">c. Urgency</div>
+            <div class="option" onclick="toggle(6)">d. Hijack</div>
+        </div>
+        <div class="answer" id="a6"><strong>Answer: a. Loss of comms (NORDO)</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>7. 7700 on transponder:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(7)">a. NORDO</div>
+            <div class="option" onclick="toggle(7)">b. Distress/Emergency</div>
+            <div class="option" onclick="toggle(7)">c. Urgency</div>
+            <div class="option" onclick="toggle(7)">d. Hijack</div>
+        </div>
+        <div class="answer" id="a7"><strong>Answer: b. Distress/Emergency</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>8. Request repeat:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(8)">a. WORDS TWICE</div>
+            <div class="option" onclick="toggle(8)">b. REPEAT</div>
+            <div class="option" onclick="toggle(8)">c. SPEAK SLOWER</div>
+            <div class="option" onclick="toggle(8)">d. SAY AGAIN</div>
+        </div>
+        <div class="answer" id="a8"><strong>Answer: d. SAY AGAIN</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>9. DECIMAL can be omitted:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(9)">a. No confusion</div>
+            <div class="option" onclick="toggle(9)">b. After initial</div>
+            <div class="option" onclick="toggle(9)">c. Never</div>
+            <div class="option" onclick="toggle(9)">d. Ground only</div>
+        </div>
+        <div class="answer" id="a9"><strong>Answer: c. Never</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>10. RESET SQUAWK:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(10)">a. Set 7000</div>
+            <div class="option" onclick="toggle(10)">b. Reselect code</div>
+            <div class="option" onclick="toggle(10)">c. Standby/ON</div>
+            <div class="option" onclick="toggle(10)">d. Press IDENT</div>
+        </div>
+        <div class="answer" id="a10"><strong>Answer: b. Reselect code</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>11. Can't contact station:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(11)">a. Try another freq</div>
+            <div class="option" onclick="toggle(11)">b. Transmit blind</div>
+            <div class="option" onclick="toggle(11)">c. Land nearest</div>
+            <div class="option" onclick="toggle(11)">d. Transmit twice</div>
+        </div>
+        <div class="answer" id="a11"><strong>Answer: a. Try another frequency</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>12. Best VHF signals:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(12)">a. High/long</div>
+            <div class="option" onclick="toggle(12)">b. High/near</div>
+            <div class="option" onclick="toggle(12)">c. Low/short</div>
+            <div class="option" onclick="toggle(12)">d. Low/long</div>
+        </div>
+        <div class="answer" id="a12"><strong>Answer: b. High altitude + near aerodrome</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>13. Q code magnetic bearing FROM:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(13)">a. QDM</div>
+            <div class="option" onclick="toggle(13)">b. QDR</div>
+            <div class="option" onclick="toggle(13)">c. QTE</div>
+            <div class="option" onclick="toggle(13)">d. QNH</div>
+        </div>
+        <div class="answer" id="a13"><strong>Answer: b. QDR</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>14. Control Zone:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(14)">a. CTR</div>
+            <div class="option" onclick="toggle(14)">b. CTZ</div>
+            <div class="option" onclick="toggle(14)">c. ATZ</div>
+            <div class="option" onclick="toggle(14)">d. CTA</div>
+        </div>
+        <div class="answer" id="a14"><strong>Answer: a. CTR</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>15. Imminent danger:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(15)">a. Mayday</div>
+            <div class="option" onclick="toggle(15)">b. Distress</div>
+            <div class="option" onclick="toggle(15)">c. Pan Pan</div>
+            <div class="option" onclick="toggle(15)">d. Urgency</div>
+        </div>
+        <div class="answer" id="a15"><strong>Answer: b. Distress</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>16. Ground controls vehicles:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(16)">a. TOWER</div>
+            <div class="option" onclick="toggle(16)">b. CLEARANCE</div>
+            <div class="option" onclick="toggle(16)">c. GROUND</div>
+            <div class="option" onclick="toggle(16)">d. APRON</div>
+        </div>
+        <div class="answer" id="a16"><strong>Answer: c. GROUND</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>17. ORBIT means:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(17)">a. Go around</div>
+            <div class="option" onclick="toggle(17)">b. Continue 360°</div>
+            <div class="option" onclick="toggle(17)">c. One 360°</div>
+            <div class="option" onclick="toggle(17)">d. Reverse</div>
+        </div>
+        <div class="answer" id="a17"><strong>Answer: b. Continue 360° turns</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>18. Aviation time:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(18)">a. Local</div>
+            <div class="option" onclick="toggle(18)">b. Minutes only</div>
+            <div class="option" onclick="toggle(18)">c. UTC</div>
+            <div class="option" onclick="toggle(18)">d. DST</div>
+        </div>
+        <div class="answer" id="a18"><strong>Answer: c. UTC (Zulu)</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>19. VHF comm range:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(19)">a. 3-30 MHz</div>
+            <div class="option" onclick="toggle(19)">b. 88-108 MHz</div>
+            <div class="option" onclick="toggle(19)">c. 108-139 MHz</div>
+            <div class="option" onclick="toggle(19)">d. 118-136.975 MHz</div>
+        </div>
+        <div class="answer" id="a19"><strong>Answer: d. 118-136.975 MHz</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>20. READABILITY 3:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(20)">a. Now/then</div>
+            <div class="option" onclick="toggle(20)">b. Unreadable</div>
+            <div class="option" onclick="toggle(20)">c. Readable</div>
+            <div class="option" onclick="toggle(20)">d. With difficulty</div>
+        </div>
+        <div class="answer" id="a20"><strong>Answer: d. With difficulty</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>21. For 'yes' say:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(21)">a. AFFIRMATIVE</div>
+            <div class="option" onclick="toggle(21)">b. ROGER</div>
+            <div class="option" onclick="toggle(21)">c. WILCO</div>
+            <div class="option" onclick="toggle(21)">d. AFFIRM</div>
+        </div>
+        <div class="answer" id="a21"><strong>Answer: d. AFFIRM</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>22. STANDBY:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(22)">a. Not sent</div>
+            <div class="option" onclick="toggle(22)">b. Proceed</div>
+            <div class="option" onclick="toggle(22)">c. Wait, I'll call</div>
+            <div class="option" onclick="toggle(22)">d. Hold position</div>
+        </div>
+        <div class="answer" id="a22"><strong>Answer: c. Wait and I will call you</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>23. Readback 123.725:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(23)">a. 123.725</div>
+            <div class="option" onclick="toggle(23)">b. 123.7</div>
+            <div class="option" onclick="toggle(23)">c. 12372</div>
+            <div class="option" onclick="toggle(23)">d. 123.72</div>
+        </div>
+        <div class="answer" id="a23"><strong>Answer: a. 123.725</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>24. HOLD SHORT reply:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(24)">a. WILCO</div>
+            <div class="option" onclick="toggle(24)">b. ROGER</div>
+            <div class="option" onclick="toggle(24)">c. HOLDING SHORT</div>
+            <div class="option" onclick="toggle(24)">d. UNDERSTOOD</div>
+        </div>
+        <div class="answer" id="a24"><strong>Answer: c. HOLDING SHORT</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>25. AFIS:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(25)">a. Aero Flight Info</div>
+            <div class="option" onclick="toggle(25)">b. Auto Flight Info</div>
+            <div class="option" onclick="toggle(25)">c. Aircraft Fire</div>
+            <div class="option" onclick="toggle(25)">d. Auto Flight Inst</div>
+        </div>
+        <div class="answer" id="a25"><strong>Answer: a. Aerodrome Flight Information Service</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>26. LINE UP priority =</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(26)">a. REQUEST QDM</div>
+            <div class="option" onclick="toggle(26)">b. CLEAR TO LAND</div>
+            <div class="option" onclick="toggle(26)">c. TAXI TO HOLDING</div>
+            <div class="option" onclick="toggle(26)">d. WORK IN PROGRESS</div>
+        </div>
+        <div class="answer" id="a26"><strong>Answer: c. TAXI TO HOLDING POINT</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>27. Blind transmission:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(27)">a. Twice</div>
+            <div class="option" onclick="toggle(27)">b. Word twice</div>
+            <div class="option" onclick="toggle(27)">c. 121.5 MHz</div>
+            <div class="option" onclick="toggle(27)">d. Wait</div>
+        </div>
+        <div class="answer" id="a27"><strong>Answer: a. Transmit twice</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>28. CORRECTION:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(28)">a. Readback wrong</div>
+            <div class="option" onclick="toggle(28)">b. Readback right</div>
+            <div class="option" onclick="toggle(28)">c. Delete</div>
+            <div class="option" onclick="toggle(28)">d. Error made</div>
+        </div>
+        <div class="answer" id="a28"><strong>Answer: d. Error - correct follows</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>29. Clearance limit:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(29)">a. FL granted</div>
+            <div class="option" onclick="toggle(29)">b. Time expires</div>
+            <div class="option" onclick="toggle(29)">c. Point cleared</div>
+            <div class="option" onclick="toggle(29)">d. Obstacle height</div>
+        </div>
+        <div class="answer" id="a29"><strong>Answer: c. Point cleared to</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>30. Transponder U/S IFR:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(30)">a. Cancel</div>
+            <div class="option" onclick="toggle(30)">b. Proceed w/ ATC</div>
+            <div class="option" onclick="toggle(30)">c. Low level</div>
+            <div class="option" onclick="toggle(30)">d. Different company</div>
+        </div>
+        <div class="answer" id="a30"><strong>Answer: b. Proceed with ATC permission</strong></div>
+    </div>
+    </div>
+
+    <!-- IFR Questions -->
+    <div id="ifr" class="question-set">
+    <div class="question">
+        <h3>1. Clearance limit is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(101)">a. FL granted</div>
+            <div class="option" onclick="toggle(101)">b. Time expires</div>
+            <div class="option" onclick="toggle(101)">c. Point cleared</div>
+            <div class="option" onclick="toggle(101)">d. Obstacle</div>
+        </div>
+        <div class="answer" id="a101"><strong>Answer: c. Point cleared to</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>2. Abort takeoff:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(102)">a. CANCEL T/O</div>
+            <div class="option" onclick="toggle(102)">b. STOP IMMEDIATELY</div>
+            <div class="option" onclick="toggle(102)">c. ABORT</div>
+            <div class="option" onclick="toggle(102)">d. negative</div>
+        </div>
+        <div class="answer" id="a102"><strong>Answer: b. STOP IMMEDIATELY</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>3. DISREGARD:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(103)">a. Ignore</div>
+            <div class="option" onclick="toggle(103)">b. Cancel</div>
+            <div class="option" onclick="toggle(103)">c. Not cleared</div>
+            <div class="option" onclick="toggle(103)">d. Pay no attention</div>
+        </div>
+        <div class="answer" id="a103"><strong>Answer: a. Ignore</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>4. CHECK:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(104)">a. Confirm</div>
+            <div class="option" onclick="toggle(104)">b. Pass info</div>
+            <div class="option" onclick="toggle(104)">c. Stay</div>
+            <div class="option" onclick="toggle(104)">d. Examine</div>
+        </div>
+        <div class="answer" id="a104"><strong>Answer: d. Examine and report</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>5. Clearance Delivery:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(105)">a. CLEARANCE</div>
+            <div class="option" onclick="toggle(105)">b. GROUND</div>
+            <div class="option" onclick="toggle(105)">c. DELIVERY</div>
+            <div class="option" onclick="toggle(105)">d. PRESTO</div>
+        </div>
+        <div class="answer" id="a105"><strong>Answer: c. DELIVERY</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>6. CORRECTION:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(106)">a. Readback wrong</div>
+            <div class="option" onclick="toggle(106)">b. Readback right</div>
+            <div class="option" onclick="toggle(106)">c. Delete</div>
+            <div class="option" onclick="toggle(106)">d. Error</div>
+        </div>
+        <div class="answer" id="a106"><strong>Answer: d. Error - correct follows</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>7. URGENCY:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(107)">a. Imminent danger</div>
+            <div class="option" onclick="toggle(107)">b. Concern no help</div>
+            <div class="option" onclick="toggle(107)">c. Immediate T/O</div>
+            <div class="option" onclick="toggle(107)">d. Immediate Ldg</div>
+        </div>
+        <div class="answer" id="a107"><strong>Answer: b. Concern, no immediate help</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>8. General call response:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(108)">a. Alpha order</div>
+            <div class="option" onclick="toggle(108)">b. Num order</div>
+            <div class="option" onclick="toggle(108)">c. No response</div>
+            <div class="option" onclick="toggle(108)">d. Request repeat</div>
+        </div>
+        <div class="answer" id="a108"><strong>Answer: c. No response unless called</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>9. Comms failure leave hold:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(109)">a. Within 10 min</div>
+            <div class="option" onclick="toggle(109)">b. Within 30 min</div>
+            <div class="option" onclick="toggle(109)">c. At EAT/ETA</div>
+            <div class="option" onclick="toggle(109)">d. Before fuel out</div>
+        </div>
+        <div class="answer" id="a109"><strong>Answer: c. At EAT or ETA</strong></div>
+    </div>
+
+    <div class="question">
+        <h3>10. PAN PAN MEDICAL:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(110)">a. Geneva</div>
+            <div class="option" onclick="toggle(110)">b. Concern</div>
+            <div class="option" onclick="toggle(110)">c. Crew ill</div>
+            <div class="option" onclick="toggle(110)">d. Need aid</div>
+        </div>
+        <div class="answer" id="a110"><strong>Answer: a. Geneva Convention medical</strong></div>
+    </div>
+    </div>
+
+    <script>
+    function showTab(tabId) {
+        document.querySelectorAll('.question-set').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+    function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }
+    </script>
+</body>
+</html>
