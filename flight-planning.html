@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Planning - DGCA Question Bank</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; padding: 1rem; }
+        .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
+        .header h1 { color: var(--primary); font-size: 1.8rem; }
+        .header a { color: var(--accent); text-decoration: none; }
+        .question { background: var(--darker); padding: 1rem; margin-bottom: 0.8rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .options { margin: 0.6rem 0; }
+        .option { padding: 0.4rem; margin: 0.2rem 0; background: var(--dark); border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
+        .option:hover { background: var(--secondary); }
+        .answer { display: none; margin-top: 0.6rem; padding: 0.6rem; background: rgba(230,57,70,0.2); border-radius: 5px; }
+        .answer.show { display: block; }
+        .answer strong { color: var(--primary); }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="header">
+        <h1>🗺️ Flight Planning (Oxford ATPL)</h1>
+        <p>Questions from Oxford Aviation Books | <a href="index.html">Home</a></p>
+    </div>
+    <script>
+    function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }
+    </script>
+
+    <div class="question">
+        <h3>1. Standard filing time for Flight Plan:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(1)">a. 15 min before ETA</div>
+            <div class="option" onclick="toggle(1)">b. 30 min before EOBT</div>
+            <div class="option" onclick="toggle(1)">c. 1 hour before EOBT</div>
+            <div class="option" onclick="toggle(1)">d. 2 hours before EOBT</div>
+        </div>
+        <div class="answer" id="a1"><strong>Answer: b. 30 min before EOBT</strong><p>File flight plan at least 30 minutes before Estimated Off-Block Time.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>2. Alternate aerodrome required when:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(2)">a. VFR flight</div>
+            <div class="option" onclick="toggle(2)">b. IFR with weather below landing minima</div>
+            <div class="option" onclick="toggle(2)">c. Day VFR under 5000ft</div>
+            <div class="option" onclick="toggle(2)">d. All flights</div>
+        </div>
+        <div class="answer" id="a2"><strong>Answer: b. When destination weather is below landing minima</strong><p>IFR flights require alternate when destination not above minima.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>3. Minimum fuel for IFR flight:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(3)">a. Trip fuel only</div>
+            <div class="option" onclick="toggle(3)">b. Trip + 30 min reserve</div>
+            <div class="option" onclick="toggle(3)">c. Trip + alternate + reserve</div>
+            <div class="option" onclick="toggle(3)">d. Trip + 45 min reserve</div>
+        </div>
+        <div class="answer" id="a3"><strong>Answer: c. Trip fuel + alternate fuel + 30 min reserve</strong><p>Minimum fuel = trip + alternate + 30 min reserve.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>4. Critical fuel scenario:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(4)">a. 45 min fuel remaining</div>
+            <div class="option" onclick="toggle(4)">b. Fuel to reach destination only</div>
+            <div class="option" onclick="toggle(4)">c. Cannot reach destination with safe margin</div>
+            <div class="option" onclick="toggle(4)">d. Above reserve fuel</div>
+        </div>
+        <div class="answer" id="a4"><strong>Answer: c. When fuel less than required to reach destination</strong><p>Critical = cannot reach destination with normal reserves.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>5. MEL stands for:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(5)">a. Minimum Equipment List</div>
+            <div class="option" onclick="toggle(5)">b. Maximum Equipment List</div>
+            <div class="option" onclick="toggle(5)">c. Maintenance Equipment List</div>
+            <div class="option" onclick="toggle(5)">d. Master Equipment List</div>
+        </div>
+        <div class="answer" id="a5"><strong>Answer: a. Minimum Equipment List</strong><p>MEL = minimum equipment required for flight.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>6. RVSM airspace:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(6)">a. Below FL290</div>
+            <div class="option" onclick="toggle(6)">b. FL290 - FL410</div>
+            <div class="option" onclick="toggle(6)">c. Above FL410</div>
+            <div class="option" onclick="toggle(6)">d. All altitudes</div>
+        </div>
+        <div class="answer" id="a6"><strong>Answer: b. RVSM = Reduced Vertical Separation Minimum (FL290-FL410)</strong><p>RVSM = 1000ft vertical separation instead of 2000ft.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>7. PNR stands for:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(7)">a. Point of No Return</div>
+            <div class="option" onclick="toggle(7)">b. Pilot Name Required</div>
+            <div class="option" onclick="toggle(7)">c. Position Not Recorded</div>
+            <div class="option" onclick="toggle(7)">d. Pre-navigation Report</div>
+        </div>
+        <div class="answer" id="a7"><strong>Answer: a. Point of No Return</strong><p>PNR = point where remaining fuel = fuel to destination.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>8. ETP is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(8)">a. Estimated Time Position</div>
+            <div class="option" onclick="toggle(8)">b. Equal Time Point</div>
+            <div class="option" onclick="toggle(8)">c. Estimated Take-off Position</div>
+            <div class="option" onclick="toggle(8)">d. Entry Time Parameter</div>
+        </div>
+        <div class="answer" id="a8"><strong>Answer: b. Equal Time Point</strong><p>ETP = point where time to destination = time to alternate.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>9. NOTAM stands for:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(9)">a. Notice to Airmen</div>
+            <div class="option" onclick="toggle(9)">b. Notice to All Men</div>
+            <div class="option" onclick="toggle(9)">c. Navigation to Airmen</div>
+            <div class="option" onclick="toggle(9)">d. Night Operations to Airmen</div>
+        </div>
+        <div class="answer" id="a9"><strong>Answer: a. Notice to Airmen</strong><p>NOTAM = notices containing info about hazards, facilities.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>10. SIGMET warning:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(10)">a. Routine weather</div>
+            <div class="option" onclick="toggle(10)">b. Significant weather hazards</div>
+            <div class="option" onclick="toggle(10)">c. Runway closure</div>
+            <div class="option" onclick="toggle(10)">d. Navigation aid failure</div>
+        </div>
+        <div class="answer" id="a10"><strong>Answer: b. Significant weather hazards (CB, turbulence, icing)</strong><p>SIGMET = significant meteorological warnings.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>11. METAR is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(11)">a. Forecast</div>
+            <div class="option" onclick="toggle(11)">b. Actual weather report</div>
+            <div class="option" onclick="toggle(11)">c. Warning</div>
+            <div class="option" onclick="toggle(11)">d. Satellite image</div>
+        </div>
+        <div class="answer" id="a11"><strong>Answer: b. METAR = Routine meteorological report (actual conditions)</strong><p>METAR = current weather at aerodrome.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>12. TAF is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(12)">a. Current weather</div>
+            <div class="option" onclick="toggle(12)">b. Terminal Aerodrome Forecast (2-9 hours)</div>
+            <div class="option" onclick="toggle(12)">c. Past weather</div>
+            <div class="option" onclick="toggle(12)">d. Warning</div>
+        </div>
+        <div class="answer" id="a12"><strong>Answer: b. Terminal Aerodrome Forecast (2-9 hour forecast)</strong><p>TAF = weather forecast for approach/departure.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>13. ATS route:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(13)">a. Any route</div>
+            <div class="option" onclick="toggle(13)">b. Designated Air Traffic Service route</div>
+            <div class="option" onclick="toggle(13)">c. Random route</div>
+            <div class="option" onclick="toggle(13)">d. Training route</div>
+        </div>
+        <div class="answer" id="a13"><strong>Answer: b. Air Traffic Service designated route</strong><p>ATS = established airway/route with ATC service.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>14. ICAO flight plan items:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(14)">a. Aircraft type, registration, route</div>
+            <div class="option" onclick="toggle(14)">b. Only route</div>
+            <div class="option" onclick="toggle(14)">c. Only fuel</div>
+            <div class="option" onclick="toggle(14)">d. Passenger list</div>
+        </div>
+        <div class="answer" id="a14"><strong>Answer: a. Aircraft type, registration, route, fuel, persons on board</strong><p>Flight plan includes aircraft, route, times, fuel, POB.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>15. RPL:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(15)">a. Random Flight Plan</div>
+            <div class="option" onclick="toggle(15)">b. Repetitive Flight Plan</div>
+            <div class="option" onclick="toggle(15)">c. Reduced Flight Plan</div>
+            <div class="option" onclick="toggle(15)">d. Route Flight Plan</div>
+        </div>
+        <div class="answer" id="a15"><strong>Answer: b. Repetitive Flight Plan</strong><p>RPL = filed for regular scheduled flights.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>16. Fuel endurance:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(16)">a. Maximum distance</div>
+            <div class="option" onclick="toggle(16)">b. Maximum time aircraft can fly</div>
+            <div class="option" onclick="toggle(16)">c. Takeoff fuel</div>
+            <div class="option" onclick="toggle(16)">d. Reserve fuel</div>
+        </div>
+        <div class="answer" id="a16"><strong>Answer: b. Maximum time aircraft can fly on fuel available</strong><p>Endurance = total fuel / fuel flow = time.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>17. Holding fuel calculation:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(17)">a. 30 min at holding speed</div>
+            <div class="option" onclick="toggle(17)">b. 45 min at holding speed</div>
+            <div class="option" onclick="toggle(17)">c. 1 hour at holding speed</div>
+            <div class="option" onclick="toggle(17)">d. Based on alternate distance</div>
+        </div>
+        <div class="answer" id="a17"><strong>Answer: a. 30 min at holding speed (or as per CAR)</strong><p>Holding fuel = 30 min at appropriate holding speed/altitude.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>18. Alternate fuel:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(18)">a. Distance to alternate</div>
+            <div class="option" onclick="toggle(18)">b. Distance + approach + miss + 30 min</div>
+            <div class="option" onclick="toggle(18)">c. Just trip fuel</div>
+            <div class="option" onclick="toggle(18)">d. Zero for VFR</div>
+        </div>
+        <div class="answer" id="a18"><strong>Answer: b. Distance to alternate + approach + miss + 30 min reserve</strong><p>Alternate fuel = fuel to fly to + 30 min reserve.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>19. VFR weather minima:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(19)">a. 1 km visibility</div>
+            <div class="option" onclick="toggle(19)">b. 5 km visibility, cloud clearances</div>
+            <div class="option" onclick="toggle(19)">c. No minima</div>
+            <div class="option" onclick="toggle(19)">d. 10 km</div>
+        </div>
+        <div class="answer" id="a19"><strong>Answer: b. 5 km visibility, clear of cloud below 1000ft</strong><p>Basic VFR = 5km, cloud clearances.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>20. IFR weather minima:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(20)">a. No cloud separation</div>
+            <div class="option" onclick="toggle(20)">b. 1000ft above MDH/MDA</div>
+            <div class="option" onclick="toggle(20)">c. 500ft</div>
+            <div class="option" onclick="toggle(20)">d. Same as VFR</div>
+        </div>
+        <div class="answer" id="a20"><strong>Answer: b. 1000ft above DH/DA or MDA</strong><p>IFR = maintain altitude at or above decision height/altitude.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>21. CNS/ATM:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(21)">a. Communication, Navigation, Surveillance/Air Traffic Management</div>
+            <div class="option" onclick="toggle(21)">b. Control, Network, System</div>
+            <div class="option" onclick="toggle(21)">c. Crew, Navigation, Safety</div>
+            <div class="option" onclick="toggle(21)">d. Combined Navigation Approach</div>
+        </div>
+        <div class="answer" id="a21"><strong>Answer: a. Communication, Navigation, Surveillance/Air Traffic Management</strong><p>CNS/ATM = modern aviation navigation system.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>22. RVR:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(22)">a. Runway Visual Range</div>
+            <div class="option" onclick="toggle(22)">b. Radar Visual Range</div>
+            <div class="option" onclick="toggle(22)">c. Required Visual Range</div>
+            <div class="option" onclick="toggle(22)">d. Radio Visual Range</div>
+        </div>
+        <div class="answer" id="a22"><strong>Answer: a. Runway Visual Range (visibility along runway)</strong><p>RVR measured by transmissometer at touchdown zone.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>23. Takeoff alternate required when:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(23)">a. Always</div>
+            <div class="option" onclick="toggle(23)">b. If takeoff visibility below minima</div>
+            <div class="option" onclick="toggle(23)">c. Only at night</div>
+            <div class="option" onclick="toggle(23)">d. Never required</div>
+        </div>
+        <div class="answer" id="a23"><strong>Answer: b. When runway visibility below takeoff minima</strong><p>Takeoff alternate needed if cannot return to departure aerodrome.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>24. EOBT:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(24)">a. Estimated On-Block Time</div>
+            <div class="option" onclick="toggle(24)">b. Estimated Off-Block Time</div>
+            <div class="option" onclick="toggle(24)">c. End of Block Time</div>
+            <div class="option" onclick="toggle(24)">d. Engine On Before Takeoff</div>
+        </div>
+        <div class="answer" id="a24"><strong>Answer: b. Estimated Off-Block Time</strong><p>EOBT = time aircraft expects to vacate parking stand.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>25. ATC clearance includes:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(25)">a. Call sign only</div>
+            <div class="option" onclick="toggle(25)">b. Clearance limit, route, altitude, squawk</div>
+            <div class="option" onclick="toggle(25)">c. Fuel load only</div>
+            <div class="option" onclick="toggle(25)">d. Weather info</div>
+        </div>
+        <div class="answer" id="a25"><strong>Answer: b. Clearance limit, route, altitude, squawk code, departure frequency</strong><p>Read back clearance items requiring confirmation.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>26. Cold temperature correction:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(26)">a. Add to altitudes</div>
+            <div class="option" onclick="toggle(26)">b. Apply cold temperature correction table</div>
+            <div class="option" onclick="toggle(26)">c. No correction needed</div>
+            <div class="option" onclick="toggle(26)">d. Subtract from altitude</div>
+        </div>
+        <div class="answer" id="a26"><strong>Answer: b. Add height when temperature below ISA (cold = true altitude lower)</strong><p>Below ISA, add correction to published altitudes.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>27. LMT:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(27)">a. Local Mean Time</div>
+            <div class="option" onclick="toggle(27)">b. Landing Management Time</div>
+            <div class="option" onclick="toggle(27)">c. Lower Meridian Time</div>
+            <div class="option" onclick="toggle(27)">d. Last Military Time</div>
+        </div>
+        <div class="answer" id="a27"><strong>Answer: a. Local Mean Time (time at specific longitude)</strong><p>LMT = solar time at location.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>28. Groundspeed calculation:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(28)">a. TAS + wind</div>
+            <div class="option" onclick="toggle(28)">b. TAS - wind component</div>
+            <div class="option" onclick="toggle(28)">c. IAS + wind</div>
+            <div class="option" onclick="toggle(28)">d. TAS</div>
+        </div>
+        <div class="answer" id="a28"><strong>Answer: b. TAS + headwind component OR TAS - tailwind component</strong><p>GS = TAS +/- wind component.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>29. 1 nm equals:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(29)">a. 6080 feet</div>
+            <div class="option" onclick="toggle(29)">b. 5280 feet</div>
+            <div class="option" onclick="toggle(29)">c. 7000 feet</div>
+            <div class="option" onclick="toggle(29)">d. 1852 meters</div>
+        </div>
+        <div class="answer" id="a29"><strong>Answer: a. 6080 feet (1852 meters)</strong><p>1 NM = 1 minute of latitude.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>30. Mach number is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(30)">a. IAS / Speed of sound</div>
+            <div class="option" onclick="toggle(30)">b. TAS / Local speed of sound</div>
+            <div class="option" onclick="toggle(30)">c. GS / Speed of sound</div>
+            <div class="option" onclick="toggle(30)">d. Weight / Speed</div>
+        </div>
+        <div class="answer" id="a30"><strong>Answer: b. TAS / Local speed of sound</strong><p>Mach = TAS ÷ speed of sound (varies with temperature).</p></div>
+    </div>
+
+</body>
+</html>
