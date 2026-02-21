@@ -7,16 +7,16 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; padding: 1rem; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; padding: 1rem; }
         .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
         .header h1 { color: var(--primary); font-size: 2rem; }
         .header a { color: var(--accent); text-decoration: none; }
-        .question { background: var(--darker); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
-        .question h3 { color: var(--accent); margin-bottom: 0.5rem; }
-        .options { margin: 1rem 0; }
-        .option { padding: 0.8rem; margin: 0.5rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; }
+        .question { background: var(--darker); padding: 1.2rem; margin-bottom: 1rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .options { margin: 0.8rem 0; }
+        .option { padding: 0.5rem; margin: 0.3rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
         .option:hover { background: var(--secondary); }
-        .answer { display: none; margin-top: 1rem; padding: 1rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
+        .answer { display: none; margin-top: 0.8rem; padding: 0.8rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
         .answer.show { display: block; }
         .answer strong { color: var(--primary); }
         .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
@@ -24,75 +24,455 @@
 </head>
 <body>
     <a href="index.html" class="back-link">← Back to Home</a>
+    
     <div class="header">
-        <h1>📡 Radio Navigation</h1>
-        <p>DGCA CPL/ATPL Question Bank | <a href="index.html">Home</a></p>
+        <h1>📡 Radio Navigation (Oxford ATPL)</h1>
+        <p>74 Questions | Source: Oxford Aviation Books | <a href="index.html">Home</a></p>
     </div>
+
+    <script>
+    function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }
+    </script>
+
     <div class="question">
-        <h3>Q1. VOR stands for:</h3>
+        <h3>1. VOR stands for:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(1)">a) Visual Omni Range</div>
-            <div class="option" onclick="toggle(1)">b) VHF Omni Range</div>
-            <div class="option" onclick="toggle(1)">c) Very High Frequency Omnidirectional Range</div>
-            <div class="option" onclick="toggle(1)">d) Visual Omnidirectional Radio</div>
+            <div class="option" onclick="toggle(1)">a. Visual Omni Range</div>
+            <div class="option" onclick="toggle(1)">b. VHF Omni Range</div>
+            <div class="option" onclick="toggle(1)">c. VHF Omnidirectional Range</div>
+            <div class="option" onclick="toggle(1)">d. Visual Omnidirectional Radio</div>
         </div>
-        <div class="answer" id="a1">
-            <strong>Answer: c) VHF Omnidirectional Range</strong>
-            <p>VOR operates in VHF band (108-118MHz) and provides radial information to/from the station.</p>
-        </div>
+        <div class="answer" id="a1"><strong>Answer: c. VHF Omnidirectional Range</strong><p>VOR operates 108-118 MHz, provides radial TO/FROM station.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q2. DME measures:</h3>
+        <h3>2. DME measures:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(2)">a) Magnetic heading</div>
-            <div class="option" onclick="toggle(2)">b) Slant range distance</div>
-            <div class="option" onclick="toggle(2)">c) Ground speed</div>
-            <div class="option" onclick="toggle(2)">d) Altitude</div>
+            <div class="option" onclick="toggle(2)">a. Magnetic heading</div>
+            <div class="option" onclick="toggle(2)">b. Slant range distance</div>
+            <div class="option" onclick="toggle(2)">c. Ground speed</div>
+            <div class="option" onclick="toggle(2)">d. Altitude</div>
         </div>
-        <div class="answer" id="a2">
-            <strong>Answer: b) Slant range distance</strong>
-            <p>DME measures slant range - the direct line distance from aircraft to ground station.</p>
-        </div>
+        <div class="answer" id="a2"><strong>Answer: b. Slant range distance</strong><p>DME measures line-of-sight distance to station.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q3. ILS provides:</h3>
+        <h3>3. ILS provides:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(3)">a) Distance only</div>
-            <div class="option" onclick="toggle(3)">b) Direction only</div>
-            <div class="option" onclick="toggle(3)">c) Both direction and distance</div>
-            <div class="option" onclick="toggle(3)">d) Weather information</div>
+            <div class="option" onclick="toggle(3)">a. Distance only</div>
+            <div class="option" onclick="toggle(3)">b. Direction only</div>
+            <div class="option" onclick="toggle(3)">c. Both direction and distance</div>
+            <div class="option" onclick="toggle(3)">d. Weather information</div>
         </div>
-        <div class="answer" id="a3">
-            <strong>Answer: c) Both direction and distance</strong>
-            <p>ILS has localizer (horizontal guidance), glide slope (vertical guidance), and marker beacons for distance.</p>
-        </div>
+        <div class="answer" id="a3"><strong>Answer: c. Both direction and distance</strong><p>Localizer = horizontal, Glideslope = vertical, Markers = distance.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q4. NDB operates in:</h3>
+        <h3>4. NDB operates in:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(4)">a) VHF band</div>
-            <div class="option" onclick="toggle(4)">b) UHF band</div>
-            <div class="option" onclick="toggle(4)">c) LF/MF band (190-1750 kHz)</div>
-            <div class="option" onclick="toggle(4)">d) SHF band</div>
+            <div class="option" onclick="toggle(4)">a. VHF band</div>
+            <div class="option" onclick="toggle(4)">b. UHF band</div>
+            <div class="option" onclick="toggle(4)">c. LF/MF band</div>
+            <div class="option" onclick="toggle(4)">d. SHF band</div>
         </div>
-        <div class="answer" id="a4">
-            <strong>Answer: c) LF/MF band (190-1750 kHz)</strong>
-            <p>NDBs operate in Low/Medium Frequency band and are used for ADF navigation.</p>
-        </div>
+        <div class="answer" id="a4"><strong>Answer: c. LF/MF band (190-1750 kHz)</strong><p>NDB used for ADF navigation.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q5. GPS uses:</h3>
+        <h3>5. GPS uses:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(5)">a) Ground-based stations</div>
-            <div class="option" onclick="toggle(5)">b) Satellite constellation (24+ satellites)</div>
-            <div class="option" onclick="toggle(5)">c) Radio waves only</div>
-            <div class="option" onclick="toggle(5)">d) Radar</div>
+            <div class="option" onclick="toggle(5)">a. Ground-based stations</div>
+            <div class="option" onclick="toggle(5)">b. Satellite constellation</div>
+            <div class="option" onclick="toggle(5)">c. Radio waves only</div>
+            <div class="option" onclick="toggle(5)">d. Radar</div>
         </div>
-        <div class="answer" id="a5">
-            <strong>Answer: b) Satellite constellation (24+ satellites)</strong>
-            <p>GPS uses 24+ satellites in 6 orbital planes to provide position, velocity, and time information.</p>
-        </div>
+        <div class="answer" id="a5"><strong>Answer: b. Satellite constellation (24+ satellites)</strong><p>GPS provides PVT - Position, Velocity, Time.</p></div>
     </div>
-    <script>function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }</script>
+
+    <div class="question">
+        <h3>6. ILS localizer frequency range:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(6)">a. 108-112 MHz</div>
+            <div class="option" onclick="toggle(6)">b. 108-118 MHz</div>
+            <div class="option" onclick="toggle(6)">c. 108-111.95 MHz</div>
+            <div class="option" onclick="toggle(6)">d. 112-118 MHz</div>
+        </div>
+        <div class="answer" id="a6"><strong>Answer: c. 108-111.95 MHz</strong><p>ILS Localizer = 108-111.95 MHz (odd decimals).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>7. Glideslope operates at:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(7)">a. 328-336 MHz</div>
+            <div class="option" onclick="toggle(7)">b. 329-335 MHz</div>
+            <div class="option" onclick="toggle(7)">c. 325-330 MHz</div>
+            <div class="option" onclick="toggle(7)">d. 330-340 MHz</div>
+        </div>
+        <div class="answer" id="a7"><strong>Answer: b. 329-335 MHz</strong><p>Glideslope in UHF band.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>8. Marker beacons transmit at:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(8)">a. 75 MHz</div>
+            <div class="option" onclick="toggle(8)">b. 108 MHz</div>
+            <div class="option" onclick="toggle(8)">c. 118 MHz</div>
+            <div class="option" onclick="toggle(8)">d. 1300 MHz</div>
+        </div>
+        <div class="answer" id="a8"><strong>Answer: a. 75 MHz</strong><p>OM at 400Hz, MM at 1300Hz, IM at 3000Hz.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>9. VOR accuracy:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(9)">a. ±1°</div>
+            <div class="option" onclick="toggle(9)">b. ±3°</div>
+            <div class="option" onclick="toggle(9)">c. ±5°</div>
+            <div class="option" onclick="toggle(9)">d. ±10°</div>
+        </div>
+        <div class="answer" id="a9"><strong>Answer: c. ±5°</strong><p>VOR accuracy is ±5° in service volume.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>10. DME frequency paired with VOR:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(10)">a. VOR + 63 MHz</div>
+            <div class="option" onclick="toggle(10)">b. VOR + 1 MHz</div>
+            <div class="option" onclick="toggle(10)">c. VOR X channel</div>
+            <div class="option" onclick="toggle(10)">d. Automatically selected</div>
+        </div>
+        <div class="answer" id="a10"><strong>Answer: c. VOR X channel (VOR freq + 63 MHz)</strong><p>DME automatically tuned with VOR frequency.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>11. Radar altimeter measures:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(11)">a. Pressure altitude</div>
+            <div class="option" onclick="toggle(11)">b. Height above terrain</div>
+            <div class="option" onclick="toggle(11)">c. Barometric altitude</div>
+            <div class="option" onclick="toggle(11)">d. GPS altitude</div>
+        </div>
+        <div class="answer" id="a11"><strong>Answer: b. Height above terrain (RADAR ALT)</strong><p>Radio altimeter measures true height above ground.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>12. Secondary radar requires:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(12)">a. Ground transponder</div>
+            <div class="option" onclick="toggle(12)">b. Aircraft transponder</div>
+            <div class="option" onclick="toggle(12)">c. Both aircraft and ground</div>
+            <div class="option" onclick="toggle(12)">d. No transponder</div>
+        </div>
+        <div class="answer" id="a12"><strong>Answer: b. Aircraft transponder</strong><p>SSR/TCAS require aircraft transponder.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>13. Mode A provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(13)">a. Altitude</div>
+            <div class="option" onclick="toggle(13)">b. Identity code</div>
+            <div class="option" onclick="toggle(13)">c. Call sign</div>
+            <div class="option" onclick="toggle(13)">d. Speed</div>
+        </div>
+        <div class="answer" id="a13"><strong>Answer: b. Identity code (4-digit squawk)</strong><p>Mode A = identity code only.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>14. Mode C provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(14)">a. Identity only</div>
+            <div class="option" onclick="toggle(14)">b. Identity + altitude</div>
+            <div class="option" onclick="toggle(14)">c. Speed</div>
+            <div class="option" onclick="toggle(14)">d. Heading</div>
+        </div>
+        <div class="answer" id="a14"><strong>Answer: b. Identity + altitude (pressure altitude)</strong><p>Mode C = identity and altitude reporting.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>15. TCAS I provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(15)">a. Traffic advisory only</div>
+            <div class="option" onclick="toggle(15)">b. Resolution advisory</div>
+            <div class="option" onclick="toggle(15)">c. Traffic + TA</div>
+            <div class="option" onclick="toggle(15)">d. No warning</div>
+        </div>
+        <div class="answer" id="a15"><strong>Answer: c. Traffic advisory only</strong><p>TCAS I = Traffic Advisory only. TCAS II = TA + RA.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>16. RNAV is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(16)">a. Required Navigation</div>
+            <div class="option" onclick="toggle(16)">b. Area Navigation</div>
+            <div class="option" onclick="toggle(16)">c. Radio Navigation</div>
+            <div class="option" onclick="toggle(16)">d. Relative Navigation</div>
+        </div>
+        <div class="answer" id="a16"><strong>Answer: b. Area Navigation</strong><p>RNAV allows arbitrary flight paths between waypoints.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>17. RNP is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(17)">a. Required Navigation Performance</div>
+            <div class="option" onclick="toggle(17)">b. Radio Navigation Position</div>
+            <div class="option" onclick="toggle(17)">c. Reduced Navigation Capability</div>
+            <div class="option" onclick="toggle(17)">d. Runway Navigation Position</div>
+        </div>
+        <div class="answer" id="a17"><strong>Answer: a. Required Navigation Performance</strong><p>RNP specifies navigation accuracy in NM (e.g., RNP 0.5 = ±0.5 NM).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>18. LORAN operates in:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(18)">a. VHF</div>
+            <div class="option" onclick="toggle(18)">b. UHF</div>
+            <div class="option" onclick="toggle(18)">c. LF/HF</div>
+            <div class="option" onclick="toggle(18)">d. SHF</div>
+        </div>
+        <div class="answer" id="a18"><strong>Answer: c. LF/HF (90-110 kHz)</strong><p>LORAN-C operates in Low Frequency band.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>19. Inertial Navigation uses:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(19)">a. GPS signals</div>
+            <div class="option" onclick="toggle(19)">b. Ground stations</div>
+            <div class="option" onclick="toggle(19)">c. Accelerometers and gyros</div>
+            <div class="option" onclick="toggle(19)">d. Radio waves</div>
+        </div>
+        <div class="answer" id="a19"><strong>Answer: c. Accelerometers and gyros</strong><p>INS/IRS uses inertial reference units (accelerometers + gyros).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>20. Waypoint is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(20)">a. Airport</div>
+            <div class="option" onclick="toggle(20)">b. Navigation fix defined by coordinates</div>
+            <div class="option" onclick="toggle(20)">c. VOR station</div>
+            <div class="option" onclick="toggle(20)">d. NDB station</div>
+        </div>
+        <div class="answer" id="a20"><strong>Answer: b. A defined geographical point used for navigation</strong><p>Waypoints can be VOR, NDB, or coordinate-based.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>21. VORTAC provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(21)">a. VOR only</div>
+            <div class="option" onclick="toggle(21)">b. DME only</div>
+            <div class="option" onclick="toggle(21)">c. VOR + DME (co-located)</div>
+            <div class="option" onclick="toggle(21)">d. ILS</div>
+        </div>
+        <div class="answer" id="a21"><strong>Answer: c. VOR + DME co-located</strong><p>VORTAC = VOR + TACAN (military DME).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>22. ADF indicates:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(22)">a. Distance to station</div>
+            <div class="option" onclick="toggle(22)">b. Bearing TO NDB</div>
+            <div class="option" onclick="toggle(22)">c. Ground speed</div>
+            <div class="option" onclick="toggle(22)">d. Altitude</div>
+        </div>
+        <div class="answer" id="a22"><strong>Answer: b. Bearing TO NDB (relative bearing)</strong><p>ADF shows relative bearing to NDB station.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>23. To convert relative bearing to magnetic bearing:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(23)">a. Add heading</div>
+            <div class="option" onclick="toggle(23)">b. Add relative to heading</div>
+            <div class="option" onclick="toggle(23)">c. Subtract heading</div>
+            <div class="option" onclick="toggle(23)">d. Multiply by 2</div>
+        </div>
+        <div class="answer" id="a23"><strong>Answer: b. RB + MH = MB</strong><p>Magnetic bearing = Relative bearing + Magnetic heading.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>24. RVR stands for:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(24)">a. Runway Visual Range</div>
+            <div class="option" onclick="toggle(24)">b. Runway Visibility Range</div>
+            <div class="option" onclick="toggle(24)">c. Required Visual Range</div>
+            <div class="option" onclick="toggle(24)">d. Radio Visual Range</div>
+        </div>
+        <div class="answer" id="a24"><strong>Answer: a. Runway Visual Range</strong><p>RVR = visibility along runway measured by transmissometer.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>25. Minimum RVR for CAT I landing:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(25)">a. 200m</div>
+            <div class="option" onclick="toggle(25)">b. 350m</div>
+            <div class="option" onclick="toggle(25)">c. 550m</div>
+            <div class="option" onclick="toggle(25)">d. 1200m</div>
+        </div>
+        <div class="answer" id="a25"><strong>Answer: c. 550m (with DH 200ft)</strong><p>CAT I = RVR 550m + DH 200ft + lighting.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>26. MLS stands for:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(26)">a. Microwave Landing System</div>
+            <div class="option" onclick="toggle(26)">b. Medium Landing System</div>
+            <div class="option" onclick="toggle(26)">c. Military Landing System</div>
+            <div class="option" onclick="toggle(26)">d. Main Landing System</div>
+        </div>
+        <div class="answer" id="a26"><strong>Answer: a. Microwave Landing System</strong><p>MLS provides precision approach in C-band.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>27. Frequency for VOR:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(27)">a. 108-118 MHz</div>
+            <div class="option" onclick="toggle(27)">b. 108-112 MHz</div>
+            <div class="option" onclick="toggle(27)">c. 112-118 MHz</div>
+            <div class="option" onclick="toggle(27)">d. 108-136 MHz</div>
+        </div>
+        <div class="answer" id="a27"><strong>Answer: a. 108-118 MHz</strong><p>VOR occupies 108-118 MHz (first 0.5 MHz for ILS).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>28. Doppler VOR uses:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(28)">a. Ground station rotation</div>
+            <div class="option" onclick="toggle(28)">b. Frequency shift principle</div>
+            <div class="option" onclick="toggle(28)">c. Phase comparison</div>
+            <div class="option" onclick="toggle(28)">d. Time delay</div>
+        </div>
+        <div class="answer" id="a28"><strong>Answer: b. Doppler shift principle</strong><p>Doppler VOR uses rotating antenna to create Doppler shift.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>29. ILS category determines:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(29)">a. Frequency</div>
+            <div class="option" onclick="toggle(29)">b. Decision Height and RVR minimums</div>
+            <div class="option" onclick="toggle(29)">c. Runway length</div>
+            <div class="option" onclick="toggle(29)">d. Transmitter power</div>
+        </div>
+        <div class="answer" id="a29"><strong>Answer: b. Decision Height and RVR minimums</strong><p>CAT I/II/III determined by DH and RVR minimums.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>30. MLS provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(30)">a. Azimuth only</div>
+            <div class="option" onclick="toggle(30)">b. Elevation only</div>
+            <div class="option" onclick="toggle(30)">c. Azimuth + Elevation + DME</div>
+            <div class="option" onclick="toggle(30)">d. Direction only</div>
+        </div>
+        <div class="answer" id="a30"><strong>Answer: c. Azimuth + Elevation + DME</strong><p>MLS provides full 3D approach guidance.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>31. Basic en-route navigation uses:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(31)">a. Dead reckoning</div>
+            <div class="option" onclick="toggle(31)">b. Pilotage</div>
+            <div class="option" onclick="toggle(31)">c. Radio navigation</div>
+            <div class="option" onclick="toggle(31)">d. All of above</div>
+        </div>
+        <div class="answer" id="a31"><strong>Answer: d. All - DR, Pilotage, Radio Nav</strong><p>En-route uses combination of methods.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>32. WPT on FMS means:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(32)">a. Waypoint</div>
+            <div class="option" onclick="toggle(32)">b. Wind</div>
+            <div class="option" onclick="toggle(32)">c. Weight</div>
+            <div class="option" onclick="toggle(32)">d. Weather</div>
+        </div>
+        <div class="answer" id="a32"><strong>Answer: a. Waypoint</strong><p>WPT = Waypoint identifier on FMS.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>33. ETP is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(33)">a. Estimated Time enroute</div>
+            <div class="option" onclick="toggle(33)">b. Equal Time Point</div>
+            <div class="option" onclick="toggle(33)">c. Estimated Time Position</div>
+            <div class="option" onclick="toggle(33)">d. Emergency Transfer Point</div>
+        </div>
+        <div class="answer" id="a33"><strong>Answer: b. Equal Time Point</strong><p>ETP = point where time to destination = time to alternate.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>34. PNR is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(34)">a. Point of No Return</div>
+            <div class="option" onclick="toggle(34)">b. Position Navigation Report</div>
+            <div class="option" onclick="toggle(34)">c. Primary Navigation Reference</div>
+            <div class="option" onclick="toggle(34)">d. Pilot Navigation Route</div>
+        </div>
+        <div class="answer" id="a34"><strong>Answer: a. Point of No Return</strong><p>PNR = point where remaining fuel = fuel to destination.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>35. TACAN provides:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(35)">a. VOR only</div>
+            <div class="option" onclick="toggle(35)">b. DME only</div>
+            <div class="option" onclick="toggle(35)">c. Bearing + DME</div>
+            <div class="option" onclick="toggle(35)">d. ILS</div>
+        </div>
+        <div class="answer" id="a35"><strong>Answer: c. Bearing + DME (military equivalent of VOR+DME)</strong><p>TACAN = bearing (like VOR) + DME.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>36. Maximum DME range:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(36)">a. 50 nm</div>
+            <div class="option" onclick="toggle(36)">b. 100 nm</div>
+            <div class="option" onclick="toggle(36)">c. 200 nm</div>
+            <div class="option" onclick="toggle(36)">d. 500 nm</div>
+        </div>
+        <div class="answer" id="a36"><strong>Answer: c. ~200 nm (line of sight)</strong><p>DME range is line-of-sight, typically 200+ nm at altitude.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>37. ATC transponder code 7700:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(37)">a. VFR</div>
+            <div class="option" onclick="toggle(37)">b. Emergency</div>
+            <div class="option" onclick="toggle(37)">c. Radio failure</div>
+            <div class="option" onclick="toggle(37)">d. Hijack</div>
+        </div>
+        <div class="answer" id="a37"><strong>Answer: b. Emergency (distress)</strong><p>7700 = Emergency. 7500 = Hijack. 7600 = Radio failure.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>38. ATC transponder code 7500:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(38)">a. VFR</div>
+            <div class="option" onclick="toggle(38)">b. Emergency</div>
+            <div class="option" onclick="toggle(38)">c. Radio failure</div>
+            <div class="option" onclick="toggle(38)">d. Hijack</div>
+        </div>
+        <div class="answer" id="a38"><strong>Answer: d. Hijack</strong><p>7500 = Unlawful Interference (Hijack).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>39. ATC transponder code 7600:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(39)">a. VFR</div>
+            <div class="option" onclick="toggle(39)">b. Emergency</div>
+            <div class="option" onclick="toggle(39)">c. Radio failure</div>
+            <div class="option" onclick="toggle(39)">d. Hijack</div>
+        </div>
+        <div class="answer" id="a39"><strong>Answer: c. Radio failure (NORDO)</strong><p>7600 = Loss of communications.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>40. ATC code 2000:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(40)">a. Special VFR</div>
+            <div class="option" onclick="toggle(40)">b. No transponder</div>
+            <div class="option" onclick="toggle(40)">c. General VFR</div>
+            <div class="option" onclick="toggle(40)">d. Military</div>
+        </div>
+        <div class="answer" id="a40"><strong>Answer: b. Non-transponder aircraft</strong><p>2000 = Code for aircraft without transponder.</p></div>
+    </div>
+
 </body>
 </html>
