@@ -3,245 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Air Navigation — Desi Throttle</title>
+    <title>Navigation - DGCA Question Bank</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; --success: #2d6a4f; --error: #9d0208; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; }
-        .header { background: linear-gradient(90deg, var(--darker), var(--secondary)); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--light); }
-        .logo span { color: var(--primary); }
-        .nav { display: flex; gap: 1.5rem; }
-        .nav a { color: var(--light); text-decoration: none; font-weight: 500; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
-        h1 { color: var(--accent); font-size: 2rem; margin-bottom: 0.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; }
-        .subtitle { color: #8892a0; margin-bottom: 2rem; }
-        .topic-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; padding: 1rem; background: var(--darker); border-radius: 10px; }
-        .topic-nav a { padding: 0.4rem 1rem; background: var(--secondary); color: var(--light); text-decoration: none; border-radius: 20px; font-size: 0.85rem; }
-        .question-card { background: var(--darker); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); }
-        .question-number { color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; }
-        .question-text { font-size: 1.05rem; margin-bottom: 1rem; }
-        .options { list-style: none; }
-        .options li { padding: 0.8rem 1rem; margin-bottom: 0.5rem; background: var(--dark); border-radius: 8px; cursor: pointer; border: 2px solid transparent; }
-        .options li:hover:not(.disabled) { background: var(--secondary); }
-        .options li.correct { background: var(--success); border-color: #52b788; }
-        .options li.wrong { background: var(--error); border-color: var(--primary); }
-        .options li.disabled { cursor: default; opacity: 0.7; }
-        .explanation { display: none; margin-top: 1rem; padding: 1rem; background: var(--secondary); border-radius: 8px; }
-        .explanation.show { display: block; }
-        .explanation h4 { color: var(--accent); margin-bottom: 0.5rem; }
-        .explanation ul { margin-left: 1.5rem; }
-        .reveal-btn { background: var(--primary); color: white; border: none; padding: 0.5rem 1.5rem; border-radius: 6px; cursor: pointer; margin-top: 0.5rem; }
-        .footer { text-align: center; padding: 2rem; color: #666; margin-top: 3rem; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; padding: 1rem; }
+        .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
+        .header h1 { color: var(--primary); font-size: 2rem; }
+        .header a { color: var(--accent); text-decoration: none; }
+        .question { background: var(--darker); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .options { margin: 1rem 0; }
+        .option { padding: 0.8rem; margin: 0.5rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; }
+        .option:hover { background: var(--secondary); }
+        .answer { display: none; margin-top: 1rem; padding: 1rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
+        .answer.show { display: block; }
+        .answer strong { color: var(--primary); }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
     </style>
 </head>
 <body>
-    <header class="header">
-        <a href="index.html" class="logo">🇮🇳 Desi<span>Throttle</span></a>
-        <nav class="nav"><a href="index.html">Home</a><a href="index.html#subjects">Subjects</a></nav>
-    </header>
-    <div class="container">
-        <h1>🧭 Air Navigation — Question Bank</h1>
-        <p class="subtitle">50+ questions on navigation for DGCA CPL/ATPL exams</p>
-        
-        <div class="topic-nav">
-            <a href="#q1">Charts</a><a href="#q2">DR Nav</a><a href="#q3">PNR</a><a href="#q4">Wind</a><a href="#q5">Time</a><a href="#q6">Great Circle</a><a href="#q7">RMI</a><a href="#q8">Scale</a>
-        </div>
-
-        <!-- Q1 -->
-        <div class="question-card" id="q1">
-            <div class="question-number">Q1.</div>
-            <p class="question-text">Scale 1:500,000 means:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 1 cm = 50 km</li>
-                <li onclick="checkAnswer(this, true)">b) 1 cm = 5 km</li>
-                <li onclick="checkAnswer(this, false)">c) 1 cm = 0.5 km</li>
-                <li onclick="checkAnswer(this, false)">d) 1 cm = 50 m</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp1')">Show Explanation</button>
-            <div class="explanation" id="exp1">
-                <h4>✅ Answer: b — 1 cm = 5 km</h4>
-                <p>1:500,000 = 1 unit on map = 500,000 units on ground</p>
-                <p>1 cm = 500,000 cm = 5,000 m = 5 km</p>
-            </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="question-card" id="q2">
-            <div class="question-number">Q2.</div>
-            <p class="question-text">Aircraft flies 45 min at GS 180 kt. Distance covered?</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 90 nm</li>
-                <li onclick="checkAnswer(this, false)">b) 120 nm</li>
-                <li onclick="checkAnswer(this, true)">c) 135 nm</li>
-                <li onclick="checkAnswer(this, false)">d) 180 nm</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp2')">Show Explanation</button>
-            <div class="explanation" id="exp2">
-                <h4>✅ Answer: c — 135 NM</h4>
-                <p>Distance = GS × Time</p>
-                <p>Time = 45 min = 0.75 hours</p>
-                <p>Distance = 180 × 0.75 = 135 NM</p>
-            </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="question-card" id="q3">
-            <div class="question-number">Q3.</div>
-            <p class="question-text">PNR stands for:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, true)">a) Point of No Return</li>
-                <li onclick="checkAnswer(this, false)">b) Point Nearest Route</li>
-                <li onclick="checkAnswer(this, false)">c) Primary Navigation Reference</li>
-                <li onclick="checkAnswer(this, false)">d) Pilot's Navigation Report</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp3')">Show Explanation</button>
-            <div class="explanation" id="exp3">
-                <h4>✅ Answer: a — Point of No Return</h4>
-                <p>PNR = Point where fuel to return = fuel to continue.</p>
-                <p>Beyond PNR, MUST continue to destination.</p>
-            </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="question-card" id="q4">
-            <div class="question-number">Q4.</div>
-            <p class="question-text">Heading 090°, TAS 200kt. Wind 180°/40kt. Drift angle?</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 0°</li>
-                <li onclick="checkAnswer(this, false)">b) 5° left</li>
-                <li onclick="checkAnswer(this, true)">c) 11.5° right</li>
-                <li onclick="checkAnswer(this, false)">d) 20° right</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp4')">Show Explanation</button>
-            <div class="explanation" id="exp4">
-                <h4>✅ Answer: c — 11.5° right drift</h4>
-                <p>Crosswind = 40kt × sin(90°) = 40kt</p>
-                <p>Drift = sin⁻¹(40/200) = 11.5°</p>
-                <p>Wind from left = drift right</p>
-            </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="question-card" id="q5">
-            <div class="question-number">Q5.</div>
-            <p class="question-text">Earth radius for navigation?</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 6,000 km</li>
-                <li onclick="checkAnswer(this, true)">b) 6,378 km</li>
-                <li onclick="checkAnswer(this, false)">c) 7,000 km</li>
-                <li onclick="checkAnswer(this, false)">d) 6,371 km polar</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp5')">Show Explanation</button>
-            <div class="explanation" id="exp5">
-                <h4>✅ Answer: b — 6,378 km</h4>
-                <p>Mean: ~6,371 km. Equatorial: 6,378 km. Polar: 6,357 km.</p>
-                <p>Navigation uses 6,378 km (3440 nm).</p>
-            </div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="question-card" id="q6">
-            <div class="question-number">Q6.</div>
-            <p class="question-text">Great Circle is:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Same as rhumb line</li>
-                <li onclick="checkAnswer(this, true)">b) Shortest path between two points</li>
-                <li onclick="checkAnswer(this, false)">c) Always east-west</li>
-                <li onclick="checkAnswer(this, false)">d) Only at equator</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp6')">Show Explanation</button>
-            <div class="explanation" id="exp6">
-                <h4>✅ Answer: b</h4>
-                <p>Great Circle = Shortest path on Earth's surface.</p>
-                <p>Rhumb line = Constant bearing track.</p>
-                <p>GC is shorter except E-W at constant latitude or N-S.</p>
-            </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="question-card" id="q7">
-            <div class="question-number">Q7.</div>
-            <p class="question-text">RMI displays:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Magnetic heading</li>
-                <li onclick="checkAnswer(this, true)">b) Bearing TO station from magnetic north</li>
-                <li onclick="checkAnswer(this, false)">c) Aircraft track</li>
-                <li onclick="checkAnswer(this, false)">d) Ground speed</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp7')">Show Explanation</button>
-            <div class="explanation" id="exp7">
-                <h4>✅ Answer: b</h4>
-                <p>RMI (Radio Magnetic Indicator) shows bearing FROM station TO aircraft, measured FROM magnetic north.</p>
-                <p>Also called QDR.</p>
-            </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="question-card" id="q8">
-            <div class="question-number">Q8.</div>
-            <p class="question-text">1 NM equals:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 1852 meters exactly</li>
-                <li onclick="checkAnswer(this, true)">b) 1852 meters exactly</li>
-                <li onclick="checkAnswer(this, false)">c) 1609 meters</li>
-                <li onclick="checkAnswer(this, false)">d) 2000 meters</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp8')">Show Explanation</button>
-            <div class="explanation" id="exp8">
-                <h4>✅ Answer: a — 1852 meters</h4>
-                <p>1 Nautical Mile = 1852 meters = 1 arc-minute of latitude.</p>
-                <p>1 Statute Mile = 1609 meters.</p>
-            </div>
-        </div>
-
-        <!-- Q9 -->
-        <div class="question-card" id="q9">
-            <div class="question-number">Q9.</div>
-            <p class="question-text">Conversion: 100 km = ? NM</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) 54 NM</li>
-                <li onclick="checkAnswer(this, true)">b) 54 NM</li>
-                <li onclick="checkAnswer(this, false)">c) 185 NM</li>
-                <li onclick="checkAnswer(this, false)">d) 62 NM</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp9')">Show Explanation</button>
-            <div class="explanation" id="exp9">
-                <h4>✅ Answer: b — 54 NM</h4>
-                <p>1 NM = 1.852 km</p>
-                <p>100 km ÷ 1.852 = 54 NM</p>
-            </div>
-        </div>
-
-        <!-- Q10 -->
-        <div class="question-card" id="q10">
-            <div class="question-number">Q10.</div>
-            <p class="question-text">DR navigation stands for:</p>
-            <ul class="options">
-                <li onclick="checkAnswer(this, false)">a) Digital Radar</li>
-                <li onclick="checkAnswer(this, true)">b) Dead Reckoning</li>
-                <li onclick="checkAnswer(this, false)">c) Direct Route</li>
-                <li onclick="checkAnswer(this, false)">d) Distance Remaining</li>
-            </ul>
-            <button class="reveal-btn" onclick="toggleExplanation('exp10')">Show Explanation</button>
-            <div class="explanation" id="exp10">
-                <h4>✅ Answer: b — Dead Reckoning</h4>
-                <p>DR = Dead Reckoning. Position calculated from last known position + heading/speed/time.</p>
-            </div>
-        </div>
-
+    <a href="index.html" class="back-link">← Back to Home</a>
+    <div class="header">
+        <h1>🧭 General Navigation</h1>
+        <p>DGCA CPL/ATPL Question Bank | <a href="index.html">Home</a></p>
     </div>
-    <footer class="footer">
-        <p>🇮🇳 Desi Throttle © 2026 | Made with ❤️ by Captain Pankaj & Nayki</p>
-    </footer>
-    <script>
-        function checkAnswer(element, isCorrect) {
-            const parent = element.parentElement;
-            parent.querySelectorAll('li').forEach(opt => { opt.classList.add('disabled'); opt.style.pointerEvents = 'none'; });
-            element.classList.add(isCorrect ? 'correct' : 'wrong');
-            if (!isCorrect) { parent.querySelectorAll('li').forEach(opt => { if (opt.getAttribute('onclick').includes('true')) opt.classList.add('correct'); }); }
-        }
-        function toggleExplanation(id) { document.getElementById(id).classList.toggle('show'); }
-    </script>
+    <div class="question">
+        <h3>Q1. The earth is a sphere - true or false?</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(1)">a) True</div>
+            <div class="option" onclick="toggle(1)">b) False - it's an oblate spheroid</div>
+            <div class="option" onclick="toggle(1)">c) False - it's flat</div>
+            <div class="option" onclick="toggle(1)">d) False - it's oval</div>
+        </div>
+        <div class="answer" id="a1">
+            <strong>Answer: b) False - it's an oblate spheroid</strong>
+            <p>Earth is an oblate spheroid - slightly flattened at the poles due to rotation.</p>
+        </div>
+    </div>
+    <div class="question">
+        <h3>Q2. Great Circle represents:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(2)">a) Shortest distance between two points</div>
+            <div class="option" onclick="toggle(2)">b) Longest distance</div>
+            <div class="option" onclick="toggle(2)">c) Same latitude</div>
+            <div class="option" onclick="toggle(2)">d) Magnetic heading</div>
+        </div>
+        <div class="answer" id="a2">
+            <strong>Answer: a) Shortest distance between two points</strong>
+            <p>Great Circle is the shortest path between two points on a sphere - used for long distance routes.</p>
+        </div>
+    </div>
+    <div class="question">
+        <h3>Q3. 1 NM (Nautical Mile) equals:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(3)">a) 6080 feet</div>
+            <div class="option" onclick="toggle(3)">b) 5280 feet</div>
+            <div class="option" onclick="toggle(3)">c) 7000 feet</div>
+            <div class="option" onclick="toggle(3)">d) 6000 feet</div>
+        </div>
+        <div class="answer" id="a3">
+            <strong>Answer: a) 6080 feet</strong>
+            <p>1 Nautical Mile = 1852 meters = 6080 feet (approximately 1 minute of latitude).</p>
+        </div>
+    </div>
+    <script>function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }</script>
 </body>
 </html>

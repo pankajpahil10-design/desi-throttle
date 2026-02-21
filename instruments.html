@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instruments - DGCA Question Bank</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; padding: 1rem; }
+        .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
+        .header h1 { color: var(--primary); font-size: 2rem; }
+        .header a { color: var(--accent); text-decoration: none; }
+        .question { background: var(--darker); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .options { margin: 1rem 0; }
+        .option { padding: 0.8rem; margin: 0.5rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; }
+        .option:hover { background: var(--secondary); }
+        .answer { display: none; margin-top: 1rem; padding: 1rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
+        .answer.show { display: block; }
+        .answer strong { color: var(--primary); }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">← Back to Home</a>
+    
+    <div class="header">
+        <h1>✈️ Flight Instruments</h1>
+        <p>DGCA CPL/ATPL Question Bank | <a href="index.html">Home</a></p>
+    </div>
+
+    <div class="question">
+        <h3>Q1. The three basic flight instruments are:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(1)">a) Altimeter, Airspeed, VSI</div>
+            <div class="option" onclick="toggle(1)">b) Altimeter, Airspeed, Heading Indicator</div>
+            <div class="option" onclick="toggle(1)">c) Altimeter, Airspeed, Artificial Horizon</div>
+            <div class="option" onclick="toggle(1)">d) Altimeter, VSI, Turn Coordinator</div>
+        </div>
+        <div class="answer" id="a1">
+            <strong>Answer: b) Altimeter, Airspeed, Artificial Horizon</strong>
+            <p>The three basic T-shaped flight instruments are: Altimeter (altitude), Airspeed Indicator (speed), and Artificial Horizon (attitude).</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Q2. A pitot tube is used to measure:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(2)">a) Static pressure</div>
+            <div class="option" onclick="toggle(2)">b) Dynamic pressure</div>
+            <div class="option" onclick="toggle(2)">c) Differential pressure</div>
+            <div class="option" onclick="toggle(2)">d) Atmospheric pressure</div>
+        </div>
+        <div class="answer" id="a2">
+            <strong>Answer: b) Dynamic pressure</strong>
+            <p>Pitot tube measures dynamic pressure (ram air pressure) which is used by the airspeed indicator to calculate airspeed.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Q3. Gyroscopic instruments use which principle?</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(3)">a) Conservation of energy</div>
+            <div class="option" onclick="toggle(3)">b) Conservation of momentum (rigidity in space)</div>
+            <div class="option" onclick="toggle(3)">c) Bernoulli's principle</div>
+            <div class="option" onclick="toggle(3)">d) Pascal's law</div>
+        </div>
+        <div class="answer" id="a3">
+            <strong>Answer: b) Conservation of momentum (rigidity in space)</strong>
+            <p>Gyroscopic instruments work on the principle of rigidity in space - a spinning rotor maintains its plane of rotation.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Q4. VSI (Vertical Speed Indicator) measures:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(4)">a) Rate of climb in feet per minute</div>
+            <div class="option" onclick="toggle(4)">b) Altitude</div>
+            <div class="option" onclick="toggle(4)">c) True airspeed</div>
+            <div class="option" onclick="toggle(4)">d) Ground speed</div>
+        </div>
+        <div class="answer" id="a4">
+            <strong>Answer: a) Rate of climb in feet per minute</strong>
+            <p>VSI measures the rate of change of altitude (climb or descent) in feet per minute (fpm).</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <h3>Q5. The static vent is used by which instruments?</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(5)">a) Airspeed indicator only</div>
+            <div class="option" onclick="toggle(5)">b) Altimeter and VSI only</div>
+            <div class="option" onclick="toggle(5)">c) Altimeter, VSI, and airspeed indicator</div>
+            <div class="option" onclick="toggle(5)">d) Artificial horizon only</div>
+        </div>
+        <div class="answer" id="a5">
+            <strong>Answer: c) Altimeter, VSI, and airspeed indicator</strong>
+            <p>All three pitot-static instruments use static pressure: Altimeter, Vertical Speed Indicator, and Airspeed Indicator.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggle(n) {
+            document.getElementById('a' + n).classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
