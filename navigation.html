@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigation - DGCA Question Bank</title>
+    <title>General Navigation - DGCA Question Bank</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root { --primary: #e63946; --secondary: #1d3557; --accent: #a8dadc; --dark: #0d1b2a; --darker: #1b263b; --light: #e0e1dd; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; padding: 1rem; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--dark); color: var(--light); line-height: 1.6; padding: 1rem; }
         .header { background: var(--darker); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid var(--primary); }
-        .header h1 { color: var(--primary); font-size: 2rem; }
+        .header h1 { color: var(--primary); font-size: 1.8rem; }
         .header a { color: var(--accent); text-decoration: none; }
-        .question { background: var(--darker); padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; }
-        .question h3 { color: var(--accent); margin-bottom: 0.5rem; }
-        .options { margin: 1rem 0; }
-        .option { padding: 0.8rem; margin: 0.5rem 0; background: var(--dark); border-radius: 6px; cursor: pointer; }
+        .question { background: var(--darker); padding: 1rem; margin-bottom: 0.8rem; border-radius: 8px; }
+        .question h3 { color: var(--accent); margin-bottom: 0.4rem; font-size: 0.9rem; }
+        .options { margin: 0.6rem 0; }
+        .option { padding: 0.4rem; margin: 0.2rem 0; background: var(--dark); border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
         .option:hover { background: var(--secondary); }
-        .answer { display: none; margin-top: 1rem; padding: 1rem; background: rgba(230,57,70,0.2); border-radius: 6px; }
+        .answer { display: none; margin-top: 0.6rem; padding: 0.6rem; background: rgba(230,57,70,0.2); border-radius: 5px; }
         .answer.show { display: block; }
         .answer strong { color: var(--primary); }
         .back-link { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
@@ -25,48 +25,342 @@
 <body>
     <a href="index.html" class="back-link">← Back to Home</a>
     <div class="header">
-        <h1>🧭 General Navigation</h1>
-        <p>DGCA CPL/ATPL Question Bank | <a href="index.html">Home</a></p>
+        <h1>🧭 General Navigation (Oxford ATPL)</h1>
+        <p>Questions from Oxford Aviation Books | <a href="index.html">Home</a></p>
     </div>
+    <script>
+    function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }
+    </script>
+
     <div class="question">
-        <h3>Q1. The earth is a sphere - true or false?</h3>
+        <h3>1. Great Circle represents:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(1)">a) True</div>
-            <div class="option" onclick="toggle(1)">b) False - it's an oblate spheroid</div>
-            <div class="option" onclick="toggle(1)">c) False - it's flat</div>
-            <div class="option" onclick="toggle(1)">d) False - it's oval</div>
+            <div class="option" onclick="toggle(1)">a. Longest distance</div>
+            <div class="option" onclick="toggle(1)">b. Shortest distance between two points</div>
+            <div class="option" onclick="toggle(1)">c. Same latitude</div>
+            <div class="option" onclick="toggle(1)">d. Magnetic heading</div>
         </div>
-        <div class="answer" id="a1">
-            <strong>Answer: b) False - it's an oblate spheroid</strong>
-            <p>Earth is an oblate spheroid - slightly flattened at the poles due to rotation.</p>
-        </div>
+        <div class="answer" id="a1"><strong>Answer: b. Shortest distance</strong><p>Great circle = shortest path on sphere.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q2. Great Circle represents:</h3>
+        <h3>2. 1 Nautical Mile equals:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(2)">a) Shortest distance between two points</div>
-            <div class="option" onclick="toggle(2)">b) Longest distance</div>
-            <div class="option" onclick="toggle(2)">c) Same latitude</div>
-            <div class="option" onclick="toggle(2)">d) Magnetic heading</div>
+            <div class="option" onclick="toggle(2)">a. 6080 feet</div>
+            <div class="option" onclick="toggle(2)">b. 5280 feet</div>
+            <div class="option" onclick="toggle(2)">c. 7000 feet</div>
+            <div class="option" onclick="toggle(2)">d. 6000 feet</div>
         </div>
-        <div class="answer" id="a2">
-            <strong>Answer: a) Shortest distance between two points</strong>
-            <p>Great Circle is the shortest path between two points on a sphere - used for long distance routes.</p>
-        </div>
+        <div class="answer" id="a2"><strong>Answer: a. 6080 feet (1852m)</strong><p>1 NM = 1 minute of latitude.</p></div>
     </div>
+
     <div class="question">
-        <h3>Q3. 1 NM (Nautical Mile) equals:</h3>
+        <h3>3. Rhumb line represents:</h3>
         <div class="options">
-            <div class="option" onclick="toggle(3)">a) 6080 feet</div>
-            <div class="option" onclick="toggle(3)">b) 5280 feet</div>
-            <div class="option" onclick="toggle(3)">c) 7000 feet</div>
-            <div class="option" onclick="toggle(3)">d) 6000 feet</div>
+            <div class="option" onclick="toggle(3)">a. Shortest distance</div>
+            <div class="option" onclick="toggle(3)">b. Constant bearing track</div>
+            <div class="option" onclick="toggle(3)">c. Great circle</div>
+            <div class="option" onclick="toggle(3)">d. Magnetic course</div>
         </div>
-        <div class="answer" id="a3">
-            <strong>Answer: a) 6080 feet</strong>
-            <p>1 Nautical Mile = 1852 meters = 6080 feet (approximately 1 minute of latitude).</p>
-        </div>
+        <div class="answer" id="a3"><strong>Answer: b. Constant bearing track</strong><p>Rhumb line = constant heading, longer than great circle.</p></div>
     </div>
-    <script>function toggle(n) { document.getElementById('a' + n).classList.toggle('show'); }</script>
+
+    <div class="question">
+        <h3>4. Convergence at poles is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(4)">a. 0°</div>
+            <div class="option" onclick="toggle(4)">b. 90° per 60 nm</div>
+            <div class="option" onclick="toggle(4)">c. Maximum</div>
+            <div class="option" onclick="toggle(4)">d. Equal at all latitudes</div>
+        </div>
+        <div class="answer" id="a4"><strong>Answer: c. Maximum at poles</strong><p>Meridians converge at poles - 1° per 60 nm at equator.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>5. Speed/distance unit conversions:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(5)">a. 1 knot = 1.852 km/h</div>
+            <div class="option" onclick="toggle(5)">b. 1 knot = 1 km/h</div>
+            <div class="option" onclick="toggle(5)">c. 1 knot = 2 km/h</div>
+            <div class="option" onclick="toggle(5)">d. 1 knot = 1.5 km/h</div>
+        </div>
+        <div class="answer" id="a5"><strong>Answer: a. 1 knot = 1.852 km/h</strong><p>1 knot = 1 NM per hour = 1.852 km/h.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>6. Solar time at Greenwich is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(6)">a. LMT</div>
+            <div class="option" onclick="toggle(6)">b. UTC (Zulu)</div>
+            <div class="option" onclick="toggle(6)">c. IST</div>
+            <div class="option" onclick="toggle(6)">d. Local time</div>
+        </div>
+        <div class="answer" id="a6"><strong>Answer: b. UTC (Zulu)</strong><p>All aviation uses UTC.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>7. Longitude measures:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(7)">a. North-South</div>
+            <div class="option" onclick="toggle(7)">b. East-West (0-180°)</div>
+            <div class="option" onclick="toggle(7)">c. Altitude</div>
+            <div class="option" onclick="toggle(7)">d. Latitude</div>
+        </div>
+        <div class="answer" id="a7"><strong>Answer: b. East-West (0-180° E/W)</strong><p>Longitude = East-West position from Prime Meridian.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>8. Latitude measures:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(8)">a. East-West</div>
+            <div class="option" onclick="toggle(8)">b. North-South (0-90°)</div>
+            <div class="option" onclick="toggle(8)">c. Altitude</div>
+            <div class="option" onclick="toggle(8)">d. Longitude</div>
+        </div>
+        <div class="answer" id="a8"><strong>Answer: b. North-South (0-90° N/S)</strong><p>Latitude = North-South position from equator.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>9. Earth's shape is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(9)">a. Perfect sphere</div>
+            <div class="option" onclick="toggle(9)">b. Oblate spheroid</div>
+            <div class="option" onclick="toggle(9)">c. Flat</div>
+            <div class="option" onclick="toggle(9)">d. Oval</div>
+        </div>
+        <div class="answer" id="a9"><strong>Answer: b. Oblate spheroid</strong><p>Earth flattened at poles due to rotation.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>10. 1° of latitude equals:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(10)">a. 1 nm</div>
+            <div class="option" onclick="toggle(10)">b. 60 nm</div>
+            <div class="option" onclick="toggle(10)">c. 100 nm</div>
+            <div class="option" onclick="toggle(10)">d. 1 km</div>
+        </div>
+        <div class="answer" id="a10"><strong>Answer: b. 60 nm</strong><p>1° latitude = 60 nm = 111 km.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>11. Variation is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(11)">a. Difference between true and magnetic</div>
+            <div class="option" onclick="toggle(11)">b. Difference between magnetic and compass</div>
+            <div class="option" onclick="toggle(11)">c. Compass error</div>
+            <div class="option" onclick="toggle(11)">d. Deviation</div>
+        </div>
+        <div class="answer" id="a11"><strong>Answer: a. Difference between true and magnetic north</strong><p>Variation = angular difference between True and Magnetic north.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>12. Deviation is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(12)">a. Magnetic variation</div>
+            <div class="option" onclick="toggle(12)">b. Aircraft magnetic interference</div>
+            <div class="option" onclick="toggle(12)">c. True heading</div>
+            <div class="option" onclick="toggle(12)">d. Compass error</div>
+        </div>
+        <div class="answer" id="a12"><strong>Answer: b. Local magnetic interference in aircraft</strong><p>Deviation = error due to aircraft magnetic fields.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>13. Compass heading + deviation + variation =</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(13)">a. True heading</div>
+            <div class="option" onclick="toggle(13)">b. Magnetic heading</div>
+            <div class="option" onclick="toggle(13)">c. Relative heading</div>
+            <div class="option" onclick="toggle(13)">d. Grid heading</div>
+        </div>
+        <div class="answer" id="a13"><strong>Answer: a. True heading</strong><p>CH + Dev + Var = TH.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>14. Grid navigation uses:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(14)">a. Magnetic north</div>
+            <div class="option" onclick="toggle(14)">b. Grid north (map projection)</div>
+            <div class="option" onclick="toggle(14)">c. True north</div>
+            <div class="option" onclick="toggle(14)">d. Compass north</div>
+        </div>
+        <div class="answer" id="a14"><strong>Answer: b. Grid north</strong><p>Grid navigation uses arbitrary reference for polar areas.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>15. Departure formula:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(15)">a. Dlong x cos(lat)</div>
+            <div class="option" onclick="toggle(15)">b. Dlong / cos(lat)</div>
+            <div class="option" onclick="toggle(15)">c. Distance x sin(lat)</div>
+            <div class="option" onclick="toggle(15)">d. Latitude difference</div>
+        </div>
+        <div class="answer" id="a15"><strong>Answer: a. Dlong x cos(mean latitude)</strong><p>Departure = change in longitude x cos(lat).</p></div>
+    </div>
+
+    <div class="question">
+        <h3>16. Mean Sun is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(16)">a. Actual sun</div>
+            <div class="option" onclick="toggle(16)">b. Fictitious sun for uniform time</div>
+            <div class="option" onclick="toggle(16)">c. Apparent sun</div>
+            <div class="option" onclick="toggle(16)">d. Star</div>
+        </div>
+        <div class="answer" id="a16"><strong>Answer: b. Fictitious sun moving at constant speed</strong><p>Mean Sun = imaginary sun for mean solar time.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>17. Equation of time is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(17)">a. Apparent - Mean solar time</div>
+            <div class="option" onclick="toggle(17)">b. Mean - Apparent solar time</div>
+            <div class="option" onclick="toggle(17)">c. UTC - LMT</div>
+            <div class="option" onclick="toggle(17)">d. Longitude difference</div>
+        </div>
+        <div class="answer" id="a17"><strong>Answer: a. Apparent - Mean solar time</strong><p>Equation of time = difference between apparent and mean sun.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>18. Sunrise/sunset calculated from:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(18)">a. Local time</div>
+            <div class="option" onclick="toggle(18)">b. UTC</div>
+            <div class="option" onclick="toggle(18)">c. LMT</div>
+            <div class="option" onclick="toggle(18)">d. IST</div>
+        </div>
+        <div class="answer" id="a18"><strong>Answer: b. UTC (then convert to local)</strong><p>Sun times calculated in UTC then converted.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>19. LMT at longitude 75°E:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(19)">a. UTC + 5</div>
+            <div class="option" onclick="toggle(19)">b. UTC + 5 hours</div>
+            <div class="option" onclick="toggle(19)">c. UTC - 5</div>
+            <div class="option" onclick="toggle(19)">d. Same as UTC</div>
+        </div>
+        <div class="answer" id="a19"><strong>Answer: b. UTC + 5 hours (75° = 5 hours)</strong><p>1° = 4 minutes, so 75° = 300 min = 5 hours.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>20. Twilight types:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(20)">a. Civil only</div>
+            <div class="option" onclick="toggle(20)">b. Civil, Nautical, Astronomical</div>
+            <div class="option" onclick="toggle(20)">c. Morning only</div>
+            <div class="option" onclick="toggle(20)">d. Evening only</div>
+        </div>
+        <div class="answer" id="a20"><strong>Answer: b. Civil (6°), Nautical (12°), Astronomical (18°)</strong><p>Three types of twilight below horizon.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>21. Star identification requires:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(21)">a. Only altitude</div>
+            <div class="option" onclick="toggle(21)">b. Altitude and azimuth</div>
+            <div class="option" onclick="toggle(21)">c. Only azimuth</div>
+            <div class="option" onclick="toggle(21)">d. Time only</div>
+        </div>
+        <div class="answer" id="a21"><strong>Answer: b. Altitude and Azimuth</strong><p>Intercept method requires both altitude and bearing.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>22. Position line from celestial:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(22)">a. Circle</div>
+            <div class="option" onclick="toggle(22)">b. Straight line (circle small section)</div>
+            <div class="option" onclick="toggle(22)">c. Hyperbola</div>
+            <div class="option" onclick="toggle(22)">d. Parabola</div>
+        </div>
+        <div class="answer" id="a22"><strong>Answer: b. Small circle section treated as straight line</strong><p>Celestial position line is part of a small circle.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>23. Cock-sure rule for stars:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(23)">a. Stars visible to naked eye</div>
+            <div class="option" onclick="toggle(23)">b. Use brightest stars at twilight</div>
+            <div class="option" onclick="toggle(23)">c. Any star</div>
+            <div class="option" onclick="toggle(23)">d. Planets only</div>
+        </div>
+        <div class="answer" id="a23"><strong>Answer: b. Bright stars visible during twilight</strong><p>Cock's crow = brightest stars visible at dawn/dusk.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>24. DR position is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(24)">a. GPS position</div>
+            <div class="option" onclick="toggle(24)">b. Calculated from last known position + heading/speed/time</div>
+            <div class="option" onclick="toggle(24)">c. Actual position</div>
+            <div class="option" onclick="toggle(24)">d. Radar position</div>
+        </div>
+        <div class="answer" id="a24"><strong>Answer: b. Dead reckoning - calculated position</strong><p>DR = last position + course made good.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>25. Wind triangle solves:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(25)">a. TAS only</div>
+            <div class="option" onclick="toggle(25)">b. Heading, groundspeed, wind correction angle</div>
+            <div class="option" onclick="toggle(25)">c. Fuel consumption</div>
+            <div class="option" onclick="toggle(25)">d. Altitude</div>
+        </div>
+        <div class="answer" id="a25"><strong>Answer: b. Heading, groundspeed, and WCA</strong><p>Wind triangle = TAS + W/V → GS and Heading.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>26. Maximum range cruise is:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(26)">a. Maximum speed</div>
+            <div class="option" onclick="toggle(26)">b. L/D max angle of attack</div>
+            <div class="option" onclick="toggle(26)">c. Minimum fuel flow</div>
+            <div class="option" onclick="toggle(26)">d. High altitude</div>
+        </div>
+        <div class="answer" id="a26"><strong>Answer: b. At angle of attack for L/D max</strong><p>Best range = fly at L/D max angle of attack.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>27. 1 knot equals:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(27)">a. 1 nm per minute</div>
+            <div class="option" onclick="toggle(27)">b. 1 nm per hour</div>
+            <div class="option" onclick="toggle(27)">c. 1 km per hour</div>
+            <div class="option" onclick="toggle(27)">d. 1 mile per hour</div>
+        </div>
+        <div class="answer" id="a27"><strong>Answer: b. 1 nautical mile per hour</strong><p>1 knot = 1 NM/h.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>28. ETP calculation assumes:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(28)">a. No wind</div>
+            <div class="option" onclick="toggle(28)">b. Constant wind</div>
+            <div class="option" onclick="toggle(28)">c. Tailwind all the way</div>
+            <div class="option" onclick="toggle(28)">d. No fuel consumed</div>
+        </div>
+        <div class="answer" id="a28"><strong>Answer: b. Constant wind for both legs</strong><p>Equal Time Point assumes constant wind on both legs.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>29. PNR calculation:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(29)">a. Halfway fuel</div>
+            <div class="option" onclick="toggle(29)">b. Fuel remaining = fuel to destination</div>
+            <div class="option" onclick="toggle(29)">c. No alternate needed</div>
+            <div class="option" onclick="toggle(29)">d. Full fuel</div>
+        </div>
+        <div class="answer" id="a29"><strong>Answer: b. Point where remaining fuel = fuel to destination</strong><p>Point of No Return = can't return with reserves.</p></div>
+    </div>
+
+    <div class="question">
+        <h3>30. Map projection types:</h3>
+        <div class="options">
+            <div class="option" onclick="toggle(30)">a. Mercator only</div>
+            <div class="option" onclick="toggle(30)">b. Lambert, Mercator, Stereographic</div>
+            <div class="option" onclick="toggle(30)">c. Polar only</div>
+            <div class="option" onclick="toggle(30)">d. Only conformal</div>
+        </div>
+        <div class="answer" id="a30"><strong>Answer: b. Lambert (mid-lat), Mercator (equatorial), Polar/Stereographic (polar)</strong><p>Different projections for different latitudes.</p></div>
+    </div>
+
 </body>
 </html>
